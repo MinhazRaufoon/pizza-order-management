@@ -1,0 +1,18 @@
+.Header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  color: #fafafa;
+  width: 100vw;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  height: var(--header-height);
+  align-items: center;
+}
+
+.Header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
