@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 import RolePicker from '../components/RolePicker'
 
 export default function Home() {
@@ -11,16 +10,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Link href="/baker">
-        <RolePicker title="Pizza Baker" backgroundImage="/images/baker.png" />
-      </Link>
+      <RolePicker
+        title="Pizza Baker"
+        href="/baker"
+        backgroundImage="/images/baker.png"
+      />
 
-      <Link href="/customer">
-        <RolePicker
-          title="Pizza Buyer"
-          backgroundImage="/images/customer.png"
-        />
-      </Link>
+      <RolePicker
+        title="Pizza Buyer"
+        href="/customer"
+        backgroundImage="/images/customer.png"
+      />
     </section>
   )
 }
