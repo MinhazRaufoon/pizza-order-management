@@ -1,0 +1,39 @@
+.NavCard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  flex: 1;
+}
+
+.NavCard h1 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.poster {
+  min-height: 50%;
+}
+
+.NavCard a {
+  margin-top: auto;
+  align-self: center;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 2px;
+  background-color: blue;
+}
+
+.NavCard a:hover {
+  box-shadow: 0 0 5px gray;
+  transform: scale(1.1, 1.1);
+  transition: transform 200ms;
+}

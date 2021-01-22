@@ -1,0 +1,10 @@
+.Baker {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card {
+  margin: 2rem;
+  min-width: 400px;
+}

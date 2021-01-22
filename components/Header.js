@@ -12,18 +12,18 @@ export default function Header() {
   return (
     <div className={styles.Header}>
       <Link href="/">
-        <h1>Pizza Management</h1>
+        <h2>Pizza Management</h2>
       </Link>
 
       {isBakerProfile && (
         <Link href="/baker">
-          <h1>&nbsp;&nbsp;&gt;&nbsp;Baker</h1>
+          <h2>&nbsp;&nbsp;&gt;&nbsp;Baker</h2>
         </Link>
       )}
 
       {isCustomerProfile && (
         <Link href="/customer">
-          <h1>&nbsp;&nbsp;&gt;&nbsp;Customer</h1>
+          <h2>&nbsp;&nbsp;&gt;&nbsp;Customer</h2>
         </Link>
       )}
     </div>
