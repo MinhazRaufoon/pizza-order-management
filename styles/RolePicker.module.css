@@ -4,6 +4,7 @@
   width: 400px;
   height: 600px;
   max-height: 70vh;
+  max-width: 40vw;
   background-color: white;
   background-position: 0 2rem;
   background-size: contain;
@@ -17,6 +18,7 @@
 .RolePicker:hover {
   transform: scale(1.1, 1.1);
   transition: transform 400ms;
+  box-shadow: 0 0 10px lightgray;
 }
 
 .RolePicker h1 {
