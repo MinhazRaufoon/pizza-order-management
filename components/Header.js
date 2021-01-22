@@ -5,23 +5,25 @@ import { useRouter } from 'next/router'
 export default function Header() {
   const { pathname } = useRouter()
 
-  const isBakerProfile = pathname.indexOf('/baker') !== -1
-
-  const isCustomerProfile = pathname.indexOf('/customer') !== -1
-
   return (
     <div className={styles.Header}>
       <Link href="/">
         <h2>Pizza Management</h2>
       </Link>
 
-      {isBakerProfile && (
-        <Link href="/baker">
-          <h2>&nbsp;&nbsp;&gt;&nbsp;Baker</h2>
-        </Link>
+      {pathname.indexOf('/baker') !== -1 && (
+        <>
+          <Link href="/baker">
+            <h2>&nbsp;&nbsp;&gt;&nbsp;Baker</h2>
+          </Link>
+
+          {pathname.indexOf('/recent') !== -1 && (
+            <h2>&nbsp;&nbsp;&gt;&nbsp;Recent orders</h2>
+          )}
+        </>
       )}
 
-      {isCustomerProfile && (
+      {pathname.indexOf('/customer') !== -1 && (
         <Link href="/customer">
           <h2>&nbsp;&nbsp;&gt;&nbsp;Customer</h2>
         </Link>

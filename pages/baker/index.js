@@ -11,7 +11,7 @@ export default function Baker(props) {
         title="Recent orders"
         details={recentOrderSummary}
         actionLabel="View all orders"
-        href="/recent"
+        href="/baker/recent"
         poster="/images/recent-orders-nav-card.jpg"
       />
 
@@ -20,7 +20,7 @@ export default function Baker(props) {
         title="Pizza ingredients"
         details={ingredientsSummary}
         actionLabel="Manage Ingredients"
-        href="/ingredients"
+        href="/baker/ingredients"
         poster="/images/ingredients-nav-card.jpg"
       />
 
@@ -29,7 +29,7 @@ export default function Baker(props) {
         title="Your suppliers"
         details={suppliersSummary}
         actionLabel="Manage your suppliers"
-        href="/suppliers"
+        href="/baker/suppliers"
         poster="/images/supplier-nav-card.jpg"
       />
     </section>

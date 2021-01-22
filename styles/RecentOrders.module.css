@@ -1,0 +1,27 @@
+.RecentOrders {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters {
+}
+
+.table {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+}
+
+.table b {
+  border: 1px solid #222;
+  padding: 0.5rem;
+  border-left: 1px solid transparent;
+}
+
+.table b:first-child {
+  border-left: 1px solid #222 !important;
+}
+
+.table span {
+  padding: 1rem;
+}
