@@ -10,11 +10,15 @@ export default function BakerIngredient(props) {
   const { name, image, models, isHidden } = props
 
   return (
-    <div className={styles.BakerIngredient}>
+    <div
+      className={styles.BakerIngredient}
+      style={{ opacity: isHidden ? '0.6' : 'unset' }}
+    >
       <Poster className={styles.poster} imageUrl={image} />
 
       <div className={styles.details}>
         <h1>{name}</h1>
+        {isHidden && <i>&nbsp;(Hidden to customers)</i>}
 
         <div className={styles.model}>
           {models.map((model, index) => (

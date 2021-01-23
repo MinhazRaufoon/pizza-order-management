@@ -79,13 +79,13 @@ export async function getIngredients() {
       name: 'Mushroom',
       image: '/images/mushroom.jpg',
       models: await getModelDetails('mushroom'),
-      isHidden: true,
+      isHidden: false,
     },
     {
       name: 'Olive',
       image: '/images/olive.png',
       models: await getModelDetails('olive'),
-      isHidden: true,
+      isHidden: false,
     },
   ]
 }
