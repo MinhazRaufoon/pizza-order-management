@@ -89,6 +89,8 @@ export default function Customer({ availableIngredients }) {
                 />
               )
           })}
+          <hr />
+          <h3 className={styles.totalPrice}>Total: {getTotalCost()} €</h3>
         </div>
 
         <h2>3. Confirm your order?</h2>
