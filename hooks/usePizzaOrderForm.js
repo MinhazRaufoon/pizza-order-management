@@ -102,7 +102,7 @@ export default function usePizzaOrderForm() {
     if (!size || totalIngredientsSelected === 0) {
       return false
     }
-    const ingredientsInfo = Object.keys(ingredientsMap).join(', ')
+    const ingredientsInfo = Object.keys(ingredientsMap).join(' + ')
     return `You will have a ${size}" pizza with ${ingredientsInfo}. Overall it costs ${totalPrice} €.`
   }, [state])
 

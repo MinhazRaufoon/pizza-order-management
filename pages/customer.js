@@ -92,13 +92,9 @@ export default function Customer({ availableIngredients }) {
         </div>
 
         <h2>3. Confirm your order?</h2>
-        <h4>{getOrderSummary()}</h4>
+        <p>{getOrderSummary()}</p>
         <input type="submit" value="Confirm My Order" />
       </form>
-
-      <div className={styles.myLastOrder}>
-        <h1>Your previous order</h1>
-      </div>
     </div>
   )
 }

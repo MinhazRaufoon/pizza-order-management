@@ -1,12 +1,16 @@
 .Customer {
-  display: grid;
-  grid-template-columns: [c0] 60% [c1] 40% [c2];
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding: 2rem;
 }
 
 .orderForm {
+  padding: 2rem 6rem 2rem 6rem;
+  box-shadow: 0 1px 3px lightgray;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .orderForm input[type='submit'] {
@@ -45,7 +49,4 @@
 }
 
 .ingredients {
-}
-
-.myLastOrder {
 }
