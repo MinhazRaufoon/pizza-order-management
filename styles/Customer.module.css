@@ -1,0 +1,36 @@
+.Customer {
+  display: grid;
+  grid-template-columns: [c0] 60% [c1] 40% [c2];
+  padding: 2rem;
+}
+
+.orderForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.orderForm input[type='submit'] {
+  align-self: flex-start;
+  border: none;
+  padding: 1rem;
+  box-shadow: 0 1px 3px gray;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ff6633;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.orderForm input[type='submit']:hover {
+  background-color: gray;
+  transition: background-color 400ms;
+}
+
+.pizzaSizePicker {
+}
+
+.ingredients {
+}
+
+.myLastOrder {
+}

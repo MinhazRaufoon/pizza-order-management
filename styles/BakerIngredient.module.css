@@ -11,12 +11,10 @@
 }
 
 .poster {
-  grid-column: 1;
   height: 200px;
 }
 
 .details {
-  grid-column: 2;
   padding: 1rem;
 }
 
@@ -24,11 +22,19 @@
   margin-top: 0;
 }
 
-.model {
+.models {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.modelPoster {
+  height: 50px;
+  border-radius: 5px;
+  background-size: contain !important;
+  background-position: left !important;
+  margin-bottom: 1rem;
 }
 
 .modelInfo {
@@ -50,6 +56,7 @@
 .buttons {
   flex-direction: row;
   display: flex;
+  align-self: flex-end;
 }
 
 .buttons button:hover {

@@ -70,17 +70,20 @@ export async function getModelDetails(ingredientName) {
   if (ingredientName === 'cheese') {
     return [
       {
+        image: '/images/mozarella.png',
         name: 'Model A',
         amount: '100 Kg',
         price: '3€',
       },
       {
+        image: '/images/cheddar.png',
         name: 'Model B',
         amount: '100 Kg',
         price: '3€',
       },
       {
         name: 'Model C',
+        image: '/images/gouda.png',
         amount: '100 Kg',
         price: '3€',
       },

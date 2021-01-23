@@ -9,6 +9,8 @@ import Poster from './Poster'
 export default function BakerIngredient(props) {
   const { name, image, models, isHidden } = props
 
+  const hasMultipleModels = models.length > 1
+
   return (
     <div
       className={styles.BakerIngredient}
@@ -20,9 +22,12 @@ export default function BakerIngredient(props) {
         <h1>{name}</h1>
         {isHidden && <i>&nbsp;(Hidden to customers)</i>}
 
-        <div className={styles.model}>
+        <div className={styles.models}>
           {models.map((model, index) => (
             <div key={model.name || index} className={styles.modelInfo}>
+              {hasMultipleModels && (
+                <Poster className={styles.modelPoster} imageUrl={model.image} />
+              )}
               <b>{model.name}&nbsp;</b>
               <label>Amount: {model.amount}</label>
               <label>Price: {model.price}</label>
