@@ -20,6 +20,10 @@ export default function Header() {
           {pathname.indexOf('/recent') !== -1 && (
             <h2>&nbsp;&nbsp;&gt;&nbsp;Recent orders</h2>
           )}
+
+          {pathname.indexOf('/ingredients') !== -1 && (
+            <h2>&nbsp;&nbsp;&gt;&nbsp;Ingredients</h2>
+          )}
         </>
       )}
 

@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { getRecentOrders } from '../../lib'
 import styles from '../../styles/RecentOrders.module.css'
 
 export default function RecentOrders({ orders }) {
@@ -38,32 +39,7 @@ export default function RecentOrders({ orders }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      orders: [
-        {
-          id: '231312312',
-          ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-          size: 'M',
-          address: '69 Puppestraße, 09126 Chemnitz',
-          phone: '01712880022',
-          status: false,
-        },
-        {
-          id: '4123123123',
-          ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-          size: 'M',
-          address: '69 Puppestraße, 09126 Chemnitz',
-          phone: '01712880022',
-          status: false,
-        },
-        {
-          id: '2232323',
-          ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-          size: 'M',
-          address: '69 Puppestraße, 09126 Chemnitz',
-          phone: '01712880022',
-          status: false,
-        },
-      ],
+      orders: await getRecentOrders(),
     },
   }
 }

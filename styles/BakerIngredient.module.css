@@ -1,0 +1,39 @@
+.BakerIngredient {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  margin: 1rem;
+  background-color: white;
+  flex-direction: column;
+  width: 350px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px lightgray;
+}
+
+.poster {
+  grid-column: 1;
+  height: 200px;
+}
+
+.details {
+  grid-column: 2;
+  padding: 1rem;
+}
+
+.details h1 {
+  margin-top: 0;
+}
+
+.model {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.modelInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
