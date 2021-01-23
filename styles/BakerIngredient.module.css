@@ -43,9 +43,8 @@
   padding: 5px;
   margin-left: 0;
   align-self: flex-start;
-  color: white;
   font-weight: bold;
-  border: none;
+  box-shadow: none;
 }
 
 .buttons {
@@ -53,10 +52,24 @@
   display: flex;
 }
 
+.buttons button:hover {
+  transform: rotateZ(360deg);
+  transition: transform 600ms;
+  background-color: unset;
+}
+
 .buttons button:first-child {
-  background-color: #222;
+  fill: green;
+}
+
+.buttons button:nth-child(2) {
+  background-color: white;
+}
+
+.buttons button:nth-child(3) {
+  fill: #333;
 }
 
 .buttons button:last-child {
-  background-color: #666;
+  fill: crimson;
 }
