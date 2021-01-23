@@ -1,0 +1,61 @@
+.SupplierCard {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  margin: 1rem;
+  background-color: white;
+  flex-direction: column;
+  min-width: 350px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px lightgray;
+}
+
+.poster {
+  grid-column: 1;
+  height: 200px;
+}
+
+.details {
+  grid-column: 2;
+  padding: 1rem;
+}
+
+.details h1 {
+  margin-top: 0;
+}
+
+.SupplierCard button {
+  margin: 5px;
+  padding: 5px;
+  margin-left: 0;
+  align-self: flex-start;
+  font-weight: bold;
+  box-shadow: none;
+}
+
+.buttons {
+  flex-direction: row;
+  display: flex;
+}
+
+.buttons button:hover {
+  transform: rotateZ(360deg);
+  transition: transform 600ms;
+  background-color: unset;
+}
+
+.buttons button:first-child {
+  fill: green;
+}
+
+.buttons button:nth-child(2) {
+  background-color: white;
+}
+
+.buttons button:nth-child(3) {
+  fill: #333;
+}
+
+.buttons button:last-child {
+  fill: crimson;
+}

@@ -1,3 +1,42 @@
+export async function getRecentOrderSummary() {
+  return [
+    {
+      type: 'Total orders',
+      value: 30,
+    },
+    {
+      type: 'Total delivered',
+      value: 10,
+    },
+  ]
+}
+
+export async function getIngredientsSummary() {
+  return [
+    {
+      type: 'Total ingredients',
+      value: 30,
+    },
+    {
+      type: 'Total hidden',
+      value: 10,
+    },
+  ]
+}
+
+export async function getSuppliersSummary() {
+  return [
+    {
+      type: 'Total suppliers',
+      value: 30,
+    },
+    {
+      type: 'Suppliers hidden',
+      value: 10,
+    },
+  ]
+}
+
 export async function getRecentOrders() {
   return [
     {
@@ -91,5 +130,41 @@ export async function getIngredients() {
 }
 
 export async function getSuppliers() {
-  return []
+  return [
+    {
+      id: '231231232',
+      name: 'Wayne Enterprise',
+      address: 'Abdullapurstraße 6969, Chemnitz',
+      image: '/images/wayne.png',
+      isHidden: false,
+    },
+    {
+      id: '421312321',
+      name: 'Los Pollos Hermanos',
+      address: 'Abdullapurstraße 6969, Chemnitz',
+      image: '/images/polos.png',
+      isHidden: false,
+    },
+    {
+      id: '32131',
+      name: 'Overlook Hotel',
+      address: 'Abdullapurstraße 6969, Chemnitz',
+      image: '/images/overlook.jpg',
+      isHidden: true,
+    },
+    {
+      id: '4214123',
+      name: 'Don Corleone Foundation',
+      address: 'Abdullapurstraße 6969, Chemnitz',
+      image: '/images/corleone.jpg',
+      isHidden: false,
+    },
+    {
+      id: '41231232',
+      name: 'Forrest Gump GmbH',
+      address: 'Abdullapurstraße 6969, Chemnitz',
+      image: '/images/gump.png',
+      isHidden: false,
+    },
+  ]
 }

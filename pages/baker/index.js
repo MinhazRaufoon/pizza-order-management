@@ -1,4 +1,9 @@
 import NavCard from '../../components/NavCard'
+import {
+  getRecentOrderSummary,
+  getIngredientsSummary,
+  getSuppliersSummary,
+} from '../../lib'
 import styles from '../../styles/Baker.module.css'
 
 export default function Baker(props) {
@@ -39,38 +44,11 @@ export default function Baker(props) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      recentOrderSummary: [
-        {
-          type: 'Total orders',
-          value: 30,
-        },
-        {
-          type: 'Total delivered',
-          value: 10,
-        },
-      ],
+      recentOrderSummary: await getRecentOrderSummary(),
 
-      ingredientsSummary: [
-        {
-          type: 'Total ingredients',
-          value: 30,
-        },
-        {
-          type: 'Total hidden',
-          value: 10,
-        },
-      ],
+      ingredientsSummary: await getIngredientsSummary(),
 
-      suppliersSummary: [
-        {
-          type: 'Total suppliers',
-          value: 30,
-        },
-        {
-          type: 'Suppliers hidden',
-          value: 10,
-        },
-      ],
+      suppliersSummary: await getSuppliersSummary(),
     },
   }
 }

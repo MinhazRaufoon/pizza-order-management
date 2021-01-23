@@ -9,6 +9,7 @@
   flex-direction: row;
   height: var(--header-height);
   align-items: center;
+  z-index: 900;
 }
 
 .Header h2 {
