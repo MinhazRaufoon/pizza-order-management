@@ -5,7 +5,7 @@
   margin: 1rem;
   background-color: white;
   flex-direction: column;
-  width: 350px;
+  min-width: 350px;
   overflow: hidden;
   box-shadow: 0 1px 3px lightgray;
 }
@@ -36,4 +36,27 @@
   flex-direction: column;
   margin-bottom: 1rem;
   margin-right: 1rem;
+}
+
+.BakerIngredient button {
+  margin: 5px;
+  padding: 5px;
+  margin-left: 0;
+  align-self: flex-start;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.buttons {
+  flex-direction: row;
+  display: flex;
+}
+
+.buttons button:first-child {
+  background-color: #222;
+}
+
+.buttons button:last-child {
+  background-color: #666;
 }

@@ -4,6 +4,9 @@ import Poster from './Poster'
 
 export default function BakerIngredient(props) {
   const { name, image, models, isHidden } = props
+
+  const hasManyModels = models.length > 1
+
   return (
     <div className={styles.BakerIngredient}>
       <Poster className={styles.poster} imageUrl={image} />
@@ -17,9 +20,23 @@ export default function BakerIngredient(props) {
               <b>{model.name}</b>
               <label>Amount: {model.amount}</label>
               <label>Price: {model.price}</label>
+              <br />
+              {hasManyModels && (
+                <div className={styles.buttons}>
+                  <button>Restock</button>
+                  <button>Remove</button>
+                </div>
+              )}
             </div>
           ))}
         </div>
+
+        {!hasManyModels && (
+          <div className={styles.buttons}>
+            <button>Restock</button>
+            <button>Remove</button>
+          </div>
+        )}
       </div>
     </div>
   )
