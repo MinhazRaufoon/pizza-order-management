@@ -20,5 +20,14 @@
   transition: transform 1000ms;
 }
 
-.PizzaSizeInput h3 {
+.active {
+}
+
+.PizzaSizeInput.active img {
+  border: 10px solid #ff4040;
+  border-radius: 100%;
+}
+
+.PizzaSizeInput.active h3 {
+  color: #ff4040;
 }

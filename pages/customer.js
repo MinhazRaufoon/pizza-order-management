@@ -1,17 +1,35 @@
 import PizzaSizeInput from '../components/PizzaSizeInput'
+import usePizzaOrderForm from '../hooks/usePizzaOrderForm'
 import styles from '../styles/Customer.module.css'
 
+const PIZZA_SIZES = [`10"`, `12"`, `14"`]
+
 export default function Customer() {
+  const {
+    getCurrentPizzaSize,
+    isIngredientSelected,
+    selectPizzaSize,
+    selectPizzaIngredient,
+    unselectPizzaIngredient,
+  } = usePizzaOrderForm()
+
   return (
     <div className={styles.Customer}>
       <form className={styles.orderForm}>
         <h1>Order a pizza</h1>
 
         <h2>1. Choose your pizza size</h2>
+
         <div className={styles.pizzaSizePicker}>
-          <PizzaSizeInput className={styles.pizzaSizeInput} size={`10"`} />
-          <PizzaSizeInput className={styles.pizzaSizeInput} size={`12"`} />
-          <PizzaSizeInput className={styles.pizzaSizeInput} size={`14"`} />
+          {PIZZA_SIZES.map((size) => (
+            <PizzaSizeInput
+              key={size}
+              className={styles.pizzaSizeInput}
+              size={size}
+              isSelected={getCurrentPizzaSize() === size}
+              onClick={() => selectPizzaSize(size)}
+            />
+          ))}
         </div>
 
         <h2>2. Choose your favorite ingredients</h2>
