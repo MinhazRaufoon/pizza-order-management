@@ -1,5 +1,7 @@
+import CustomerIngredient from '../components/CustomerIngredient'
 import PizzaSizeInput from '../components/PizzaSizeInput'
 import usePizzaOrderForm from '../hooks/usePizzaOrderForm'
+import { getAvailableIngredients } from '../lib'
 import styles from '../styles/Customer.module.css'
 
 const PIZZA_SIZES = [`10"`, `12"`, `14"`]
@@ -15,7 +17,7 @@ export default function Customer({ availableIngredients }) {
 
   return (
     <div className={styles.Customer}>
-      <form className={styles.orderForm}>
+      <form className={styles.orderForm} onSubmit={(e) => e.preventDefault()}>
         <h1>Order a pizza</h1>
 
         <h2>1. Choose your pizza size</h2>
@@ -33,8 +35,36 @@ export default function Customer({ availableIngredients }) {
         </div>
 
         <h2>2. Choose your favorite ingredients</h2>
+
         <div className={styles.ingredients}>
-          <p>You can add and remove items</p>
+          {availableIngredients.map((ingredient) => {
+            if (ingredient.models) {
+              return false
+            } else
+              return (
+                <CustomerIngredient
+                  key={ingredient.name}
+                  label={ingredient.name}
+                  price={ingredient.price}
+                  image={ingredient.icon}
+                  isSelected={isIngredientSelected(ingredient.name)}
+                  select={() =>
+                    selectPizzaIngredient(
+                      ingredient.name,
+                      null,
+                      ingredient.price
+                    )
+                  }
+                  remove={() =>
+                    unselectPizzaIngredient(
+                      ingredient.name,
+                      null,
+                      ingredient.price
+                    )
+                  }
+                />
+              )
+          })}
         </div>
 
         <h2>3. Confirm your order?</h2>
@@ -53,7 +83,7 @@ export default function Customer({ availableIngredients }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      availableIngredients,
+      availableIngredients: await getAvailableIngredients(),
     },
   }
 }

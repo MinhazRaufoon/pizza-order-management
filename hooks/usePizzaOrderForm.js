@@ -2,43 +2,53 @@ import { useCallback, useReducer } from 'react'
 
 const INITIAL_STATE = {
   size: null,
-  ingredientMap: {},
+  ingredientsMap: {},
   totalPrice: 0,
 }
 
 function reducePizzaOrder(state, action) {
+  console.log(action.type)
+
+  let newState = state
+
   switch (action.type) {
     case 'ACTION_SELECT_PIZZA_SIZE':
-      return {
+      newState = {
         ...state,
         size: action.size,
       }
+      break
 
     case 'ACTION_SELECT_PIZZA_INGREDIENT':
-      return {
+      newState = {
         ...state,
 
         ingredientsMap: {
-          ...state.ingredientMap,
-          [action.name + action.rp ? action.rp : '']: true,
+          ...state.ingredientsMap,
+          [action.name + (action.rp ? action.rp : '')]: true,
         },
 
         totalPrice: state.totalPrice + action.price,
       }
+      break
 
     case 'ACTION_UNSELECT_PIZZA_INGREDIENT':
-      return {
+      newState = {
         ...state,
 
         ingredientsMap: {
-          ...state.ingredientMap,
-          [action.name + action.rp ? action.rp : '']: false,
+          ...state.ingredientsMap,
+          [action.name + (action.rp ? action.rp : '')]: false,
         },
 
         totalPrice: state.totalPrice - action.price,
       }
+      break
   }
-  return state
+
+  console.log(newState)
+
+  return newState
 }
 
 export default function usePizzaOrderForm() {
@@ -80,7 +90,7 @@ export default function usePizzaOrderForm() {
 
   const isIngredientSelected = useCallback(
     (name, rp) => {
-      return state.ingredientMap[name + rp ? rp : '']
+      return state.ingredientsMap[name + (rp ? rp : '')]
     },
     [state]
   )

@@ -1,0 +1,32 @@
+.CustomerIngredient {
+  display: grid;
+  grid-template-columns: [c1] 100px [c2] auto [c3] 20% [c4] 20% [c5];
+  align-items: center;
+  margin: 1rem;
+  max-width: 500px;
+}
+
+.icon {
+  width: 100px;
+  border-radius: 5px;
+}
+
+.CustomerIngredient > * {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.CustomerIngredient button {
+  background-color: #222;
+  color: white;
+  font-weight: bold;
+}
+
+.checked {
+}
+
+.CustomerIngredient.checked button {
+  background-color: crimson;
+  color: white;
+  font-weight: bold;
+}
