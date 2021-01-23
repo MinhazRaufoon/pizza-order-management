@@ -4,7 +4,7 @@ import usePizzaOrderForm from '../hooks/usePizzaOrderForm'
 import { getAvailableIngredients } from '../lib'
 import styles from '../styles/Customer.module.css'
 
-const PIZZA_SIZES = [`10"`, `12"`, `14"`]
+const PIZZA_SIZES = [10, 12, 14]
 
 export default function Customer({ availableIngredients }) {
   const {
@@ -13,6 +13,8 @@ export default function Customer({ availableIngredients }) {
     selectPizzaSize,
     selectPizzaIngredient,
     unselectPizzaIngredient,
+    getOrderSummary,
+    getTotalCost,
   } = usePizzaOrderForm()
 
   return (
@@ -39,7 +41,29 @@ export default function Customer({ availableIngredients }) {
         <div className={styles.ingredients}>
           {availableIngredients.map((ingredient) => {
             if (ingredient.models) {
-              return false
+              return ingredient.models.map((model) => (
+                <CustomerIngredient
+                  key={ingredient.name + model.name}
+                  label={`${ingredient.name} (${model.name})`}
+                  price={model.price}
+                  image={model.icon}
+                  isSelected={isIngredientSelected(ingredient.name, model.name)}
+                  select={() =>
+                    selectPizzaIngredient(
+                      ingredient.name,
+                      model.name,
+                      model.price
+                    )
+                  }
+                  remove={() =>
+                    unselectPizzaIngredient(
+                      ingredient.name,
+                      model.name,
+                      model.price
+                    )
+                  }
+                />
+              ))
             } else
               return (
                 <CustomerIngredient
@@ -68,14 +92,13 @@ export default function Customer({ availableIngredients }) {
         </div>
 
         <h2>3. Confirm your order?</h2>
-        <p>
-          You will have a 28 inch pizza with cheese, bacon and tomato. Overall
-          it costs 50€.
-        </p>
+        <h4>{getOrderSummary()}</h4>
         <input type="submit" value="Confirm My Order" />
       </form>
 
-      <div className={styles.myLastOrder}></div>
+      <div className={styles.myLastOrder}>
+        <h1>Your previous order</h1>
+      </div>
     </div>
   )
 }

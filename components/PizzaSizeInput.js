@@ -10,7 +10,7 @@ export default function PizzaSizeInput(props) {
       }`}
     >
       <img src="/images/pizza-base.png" alt="pizza base" {...rest} />
-      <h3>{size}</h3>
+      <h3>{size}"</h3>
     </div>
   )
 }
