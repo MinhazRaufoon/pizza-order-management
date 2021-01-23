@@ -171,3 +171,38 @@ export async function getSuppliers() {
     },
   ]
 }
+
+export async function getAvailableIngredients() {
+  return [
+    {
+      name: 'Cheese',
+      models: [
+        {
+          name: 'Model A',
+          icon: '/images/cheddar.png',
+          price: '5€',
+        },
+        {
+          name: 'Model C',
+          icon: '/images/gouda.png',
+          price: '5€',
+        },
+      ],
+    },
+    {
+      name: 'Bacon',
+      price: '5€',
+      icon: '/images/bacon-logo.png',
+    },
+    {
+      name: 'Mushroom',
+      price: '5€',
+      icon: '/images/mushroom-logo.png',
+    },
+    {
+      name: 'Olive',
+      price: '5€',
+      icon: '/images/olive-logo.png',
+    },
+  ]
+}

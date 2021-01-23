@@ -4,7 +4,7 @@ import styles from '../styles/Customer.module.css'
 
 const PIZZA_SIZES = [`10"`, `12"`, `14"`]
 
-export default function Customer() {
+export default function Customer({ availableIngredients }) {
   const {
     getCurrentPizzaSize,
     isIngredientSelected,
@@ -48,4 +48,12 @@ export default function Customer() {
       <div className={styles.myLastOrder}></div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      availableIngredients,
+    },
+  }
 }
