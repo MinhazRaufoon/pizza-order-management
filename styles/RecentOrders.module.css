@@ -12,6 +12,7 @@
   display: grid;
   background-color: #fafafa;
   grid-template-columns: repeat(7, auto);
+  box-shadow: 0 0 10px black;
   border-radius: 5px;
 }
 

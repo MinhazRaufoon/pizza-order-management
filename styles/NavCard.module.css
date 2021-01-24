@@ -4,6 +4,7 @@
   align-items: stretch;
   background-color: white;
   border: 3px solid white;
+  box-shadow: 0 0 10px black;
 }
 
 .content {
