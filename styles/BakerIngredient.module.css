@@ -1,13 +1,12 @@
 .BakerIngredient {
   display: flex;
-  border: 1px solid lightgray;
+  border: 3px solid white;
   border-radius: 2px;
   margin: 1rem;
   background-color: white;
   flex-direction: column;
   min-width: 350px;
   overflow: hidden;
-  box-shadow: 0 1px 3px lightgray;
 }
 
 .poster {

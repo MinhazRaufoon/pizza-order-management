@@ -8,18 +8,15 @@
 
 .table {
   margin-top: 2rem;
+  padding: 2rem;
   display: grid;
+  background-color: #fafafa;
   grid-template-columns: repeat(7, auto);
+  border-radius: 5px;
 }
 
 .table b {
-  border: 1px solid #222;
   padding: 0.5rem;
-  border-left: 1px solid transparent;
-}
-
-.table b:first-child {
-  border-left: 1px solid #222 !important;
 }
 
 .table span {

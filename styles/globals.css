@@ -6,7 +6,6 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
-  background-color: #fafafa;
 
   --header-height: 65px;
 }
@@ -14,6 +13,8 @@ body {
 section {
   min-height: calc(100vh - var(--header-height));
   padding: 2rem;
+  background-image: url('/images/background1.jpg');
+  background-size: auto;
 }
 
 a {

@@ -10,7 +10,7 @@
   box-shadow: 0 1px 3px lightgray;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #fafafa;
 }
 
 .orderForm input[type='submit'] {

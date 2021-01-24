@@ -18,7 +18,7 @@ export default function Customer({ availableIngredients }) {
   } = usePizzaOrderForm()
 
   return (
-    <div className={styles.Customer}>
+    <section className={styles.Customer}>
       <form className={styles.orderForm} onSubmit={(e) => e.preventDefault()}>
         <h1>Order a pizza</h1>
 
@@ -97,7 +97,7 @@ export default function Customer({ availableIngredients }) {
         <p>{getOrderSummary()}</p>
         <input type="submit" value="Confirm My Order" />
       </form>
-    </div>
+    </section>
   )
 }
 

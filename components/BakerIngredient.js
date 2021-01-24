@@ -14,7 +14,7 @@ export default function BakerIngredient(props) {
   return (
     <div
       className={styles.BakerIngredient}
-      style={{ opacity: isHidden ? '0.6' : 'unset' }}
+      style={{ backgroundColor: isHidden ? 'lightgray' : '#fafafa' }}
     >
       <Poster className={styles.poster} imageUrl={image} />
 
