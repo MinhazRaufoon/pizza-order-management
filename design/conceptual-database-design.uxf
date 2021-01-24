@@ -1,73 +1,81 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>560</x><y>20</y><w>160</w><h>110</h></coordinates><panel_attributes>User
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>370</x><y>0</y><w>160</w><h>120</h></coordinates><panel_attributes>User
 --
 
 ID {PK}
 Name
+Mobile
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>230</y><w>160</w><h>90</h></coordinates><panel_attributes>Customer
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>220</y><w>160</w><h>90</h></coordinates><panel_attributes>Customer
 --
 
 /totalOrders
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>230</y><w>160</w><h>90</h></coordinates><panel_attributes>Baker
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>220</y><w>160</w><h>110</h></coordinates><panel_attributes>Baker
 --
 
 Salary
+/totalIngredients
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>230</y><w>160</w><h>90</h></coordinates><panel_attributes>Supplier
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>220</y><w>160</w><h>110</h></coordinates><panel_attributes>Supplier
 --
 
 Address
+imageURL
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>628</x><y>120</y><w>120</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-
-{ Mandatory, Or }</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>428</x><y>180</y><w>630</w><h>70</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;610;10;610;50</additional_attributes></element><element><id>Relation</id><coordinates><x>268</x><y>180</y><w>190</w><h>70</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>170;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>430</y><w>210</w><h>210</h></coordinates><panel_attributes>PizzaOrder
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>438</x><y>110</y><w>120</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-
+{ Mandatory, Or }</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>238</x><y>170</y><w>630</w><h>70</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;610;10;610;50</additional_attributes></element><element><id>Relation</id><coordinates><x>78</x><y>170</y><w>190</w><h>70</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>170;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>420</y><w>210</w><h>230</h></coordinates><panel_attributes>PizzaOrder
 --
 
-ID { PK }
+OrderNo { PK }
 baseSize
-Address
+DeliveryAddress
     HouseNo
     Street
     PostCode
     City
 datetime
 totalCost
+hasDelivered
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>660</y><w>210</w><h>120</h></coordinates><panel_attributes>Ingredient
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>650</y><w>210</w><h>130</h></coordinates><panel_attributes>Ingredient
 --
 
 Name { PK }
 RegionalProvenance { PK }
 price
+imageURL
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>309</y><w>80</w><h>140</h></coordinates><panel_attributes>lt=-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>299</y><w>80</w><h>140</h></coordinates><panel_attributes>lt=-
 m1=1..1
 m2=0..*
-creates &gt;</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>629</y><w>470</w><h>120</h></coordinates><panel_attributes>lt=-
+creates &gt;</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>639</y><w>470</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..*
 m2=1..*
-composedOf &gt;</panel_attributes><additional_attributes>10;10;10;90;450;90</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>309</y><w>170</w><h>390</h></coordinates><panel_attributes>lt=-
+contains &gt;</panel_attributes><additional_attributes>10;10;10;70;450;70</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>319</y><w>170</w><h>370</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=0..*
-owns &gt;</panel_attributes><additional_attributes>10;10;10;360;150;360</additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>390</y><w>100</w><h>80</h></coordinates><panel_attributes>
+owns &gt;</panel_attributes><additional_attributes>10;10;10;340;150;340</additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>380</y><w>100</w><h>80</h></coordinates><panel_attributes>
 --
 isHidden
 amount
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>420</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>309</y><w>220</w><h>430</h></coordinates><panel_attributes>lt=-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>410</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>319</y><w>220</w><h>410</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-produces &gt;</panel_attributes><additional_attributes>140;10;140;400;10;400</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>249</y><w>270</w><h>50</h></coordinates><panel_attributes>lt=-
+produces &gt;</panel_attributes><additional_attributes>140;10;140;380;10;380</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>239</y><w>270</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=1..*
-contracts &gt;</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>300</y><w>100</w><h>60</h></coordinates><panel_attributes>
+contracts &gt;</panel_attributes><additional_attributes>10;20;250;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>290</y><w>100</w><h>60</h></coordinates><panel_attributes>
 --
 isHidden
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>450</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>309</y><w>120</w><h>270</h></coordinates><panel_attributes>lt=-
-m1=1..1</panel_attributes><additional_attributes>10;10;10;250;100;250</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>309</y><w>140</w><h>270</h></coordinates><panel_attributes>lt=-
-m1=1..1</panel_attributes><additional_attributes>100;10;100;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>609</y><w>50</w><h>70</h></coordinates><panel_attributes>lt=-
-m1=1..1</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>390</y><w>100</w><h>70</h></coordinates><panel_attributes>
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>460</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>319</y><w>120</w><h>250</h></coordinates><panel_attributes>lt=-
+m1=1..1</panel_attributes><additional_attributes>10;10;10;230;100;230</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>319</y><w>140</w><h>250</h></coordinates><panel_attributes>lt=-
+m1=1..1</panel_attributes><additional_attributes>100;10;100;230;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>599</y><w>50</w><h>70</h></coordinates><panel_attributes>lt=-
+m1=1..1</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>390</y><w>100</w><h>80</h></coordinates><panel_attributes>
 --
-ID { PK }
 datetime
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>260</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>760</x><y>500</y><w>150</w><h>120</h></coordinates><panel_attributes>type=decision
-restocks</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+amount
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>250</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>570</x><y>490</y><w>150</w><h>120</h></coordinates><panel_attributes>type=decision
+restocks</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>269</y><w>340</w><h>490</h></coordinates><panel_attributes>lt=-
+m1=0..1
+m2=1..1
+specializes &gt;</panel_attributes><additional_attributes>200;10;250;10;250;460;10;460</additional_attributes></element></diagram>

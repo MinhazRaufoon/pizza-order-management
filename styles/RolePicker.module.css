@@ -1,8 +1,8 @@
 .RolePicker {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 400px;
   max-height: 70vh;
   max-width: 40vw;
   background-color: white;
@@ -22,13 +22,13 @@
 
 @keyframes blink {
   0% {
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 30px black;
   }
   50% {
-    box-shadow: 0 0 10px blue;
+    box-shadow: 0 0 30px blue;
   }
   100% {
-    box-shadow: 0 0 10px yellowgreen;
+    box-shadow: 0 0 30px yellowgreen;
   }
 }
 
