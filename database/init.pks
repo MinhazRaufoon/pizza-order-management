@@ -1,7 +1,6 @@
 create or replace function CreateCustomerTable() returns void
 as $$
 begin
-  drop table Customer;
   create table Customer (
     id char(6) primary key,
     fullname varchar(20),
@@ -15,7 +14,6 @@ $$ LANGUAGE plpgsql;
 create or replace function CreatePizzaOrderTable() returns void
 as $$
 begin
-  drop table PizzaOrder;
   create table PizzaOrder(
     orderNo char(10) not null primary key,
     customerId char(6),
@@ -37,7 +35,6 @@ $$ LANGUAGE plpgsql;
 create or replace function CreateBakerTable() returns void
 as $$
 begin
-  drop table Baker;
   create table Baker(
     id char(6) primary key,
     fullname varchar(20),
@@ -51,7 +48,6 @@ $$ LANGUAGE plpgsql;
 create or replace function CreateIngredientTable() returns void
 as $$
 begin
-  drop table Ingredient;
   create table Ingredient(
     name varchar(20) primary key,
     regionalProvenance varchar(20) primary key,
@@ -65,7 +61,6 @@ $$ LANGUAGE plpgsql;
 create or replace function CreateSupplierTable() returns void
 as $$
 begin
-  drop table Supplier;
   create table Supplier(
     id char(6) primary key,
     fullname varchar(20),
@@ -80,7 +75,6 @@ $$ LANGUAGE plpgsql;
 create or replace function CreateContractsTable() returns void
 as $$
 begin
-  drop table Contracts;
   create table Contracts(
     bakerId char(6),
     supplierId char(6),
@@ -95,7 +89,6 @@ $$ language plpgsql;
 create or replace function CreateProducesTable() returns void
 as $$
 begin
-  drop table Produces;
   create table Produces(
     supplierId char(6),
     ingredientName varchar(20),
@@ -111,7 +104,6 @@ $$ language plpgsql;
 create or replace function CreateOwnsTable() returns void
 as $$
 begin
-  drop table Owns;
   create table Owns(
     bakerId char(6),
     ingredientName varchar(20),
@@ -129,7 +121,6 @@ $$ language plpgsql;
 create or replace function CreateContainsTable() returns void
 as $$
 begin
-  drop table Contains;
   create table Contains(
     orderNo char(10),
     ingredientName varchar(20),
@@ -145,7 +136,6 @@ $$ language plpgsql;
 create or replace function CreateRestocksTable() returns void
 as $$
 begin
-  drop table Restocks;
   create table Restocks(
     bakerId char(6),
     supplierId char(6),
