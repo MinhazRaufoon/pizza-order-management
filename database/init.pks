@@ -71,11 +71,7 @@ begin
     fullname varchar(20),
     mobileNo char(11),
     address varchar(50),
-    imageOid oid,
-    specialIngredientName varchar(20),
-    specialIngredientRP varchar(20),
-    constraint fk_specialIngredientName foreign key (specialIngredientName) references Ingredient(name),
-    constraint fk_specialIngredientRP foreign key (specialIngredientRP) references Ingredient(regionalProvenance)
+    imageOid oid
   );
 end;
 $$ LANGUAGE plpgsql;
@@ -123,6 +119,22 @@ begin
     isHidden boolean not null default false,
     amount integer not null default 0,
     constraint fk_sid foreign key (bakerId) references Baker(id),
+    constraint fk_in foreign key (ingredientName) references Ingredient(name),
+    constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
+  );
+end;
+$$ language plpgsql;
+
+
+create or replace function CreateContainsTable() returns void
+as $$
+begin
+  drop table Contains;
+  create table Contains(
+    orderNo char(10),
+    ingredientName varchar(20),
+    regionalProvenance varchar(20),
+    constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
     constraint fk_in foreign key (ingredientName) references Ingredient(name),
     constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
   );
