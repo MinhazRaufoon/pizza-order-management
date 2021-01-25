@@ -1,7 +1,7 @@
 import CustomerIngredient from '../components/CustomerIngredient'
 import PizzaSizeInput from '../components/PizzaSizeInput'
 import usePizzaOrderForm from '../hooks/usePizzaOrderForm'
-import { getAvailableIngredients } from '../lib'
+import { getAvailableIngredients, getCustomerData } from '../lib'
 import styles from '../styles/Customer.module.css'
 
 const PIZZA_SIZES = [10, 12, 14]
@@ -105,6 +105,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       availableIngredients: await getAvailableIngredients(),
+      customerInfo: await getCustomerData(),
     },
   }
 }

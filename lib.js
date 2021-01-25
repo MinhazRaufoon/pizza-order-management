@@ -1,3 +1,10 @@
+import { connectDB } from './database'
+
+export async function getCustomerData() {
+  const conn = await connectDB()
+  return {}
+}
+
 export async function getRecentOrderSummary() {
   return [
     {
