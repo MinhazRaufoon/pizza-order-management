@@ -73,7 +73,9 @@ begin
     address varchar(50),
     imageOid oid,
     specialIngredientName varchar(20),
-    specialIngredientRP varchar(20)  
+    specialIngredientRP varchar(20),
+    constraint fk_specialIngredientName foreign key (specialIngredientName) references Ingredient(name),
+    constraint fk_specialIngredientRP foreign key (specialIngredientRP) references Ingredient(regionalProvenance)
   );
 end;
 $$ LANGUAGE plpgsql;
