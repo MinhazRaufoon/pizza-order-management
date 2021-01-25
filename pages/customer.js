@@ -6,7 +6,7 @@ import styles from '../styles/Customer.module.css'
 
 const PIZZA_SIZES = [10, 12, 14]
 
-export default function Customer({ availableIngredients }) {
+export default function Customer({ availableIngredients, customerInfo }) {
   const {
     getCurrentPizzaSize,
     isIngredientSelected,
@@ -16,6 +16,8 @@ export default function Customer({ availableIngredients }) {
     getOrderSummary,
     getTotalCost,
   } = usePizzaOrderForm()
+
+  console.log(customerInfo)
 
   return (
     <section className={styles.Customer}>

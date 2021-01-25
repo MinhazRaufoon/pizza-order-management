@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "initdb": "node scripts/init-db.js",
+    "start": "npm run initdb && npm run dev"
   },
   "dependencies": {
     "next": "10.0.5",
+    "pg": "^8.5.1",
     "pg-promise": "^10.9.1",
     "react": "17.0.1",
     "react-dom": "17.0.1"

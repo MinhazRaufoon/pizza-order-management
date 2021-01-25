@@ -1,8 +1,6 @@
-import { connectDB } from './database'
-
 export async function getCustomerData() {
-  const conn = await connectDB()
-  return {}
+  const response = await fetch('http://localhost:3000/api/customerdetails')
+  return response.json()
 }
 
 export async function getRecentOrderSummary() {
