@@ -1,6 +1,8 @@
 .Ingredients {
   display: flex;
   flex-direction: column;
+  background-image: url('/images/kitchentable.jpg');
+  background-size: contain;
 }
 
 .filters {

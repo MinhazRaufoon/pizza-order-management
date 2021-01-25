@@ -1,6 +1,8 @@
 .RecentOrders {
   display: flex;
   flex-direction: column;
+  background-image: url('/images/kitchentable.jpg');
+  background-size: cover;
 }
 
 .filters {
@@ -12,7 +14,7 @@
   display: grid;
   background-color: #fafafa;
   grid-template-columns: repeat(7, auto);
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 6px black;
   border-radius: 5px;
 }
 
