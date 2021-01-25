@@ -26,7 +26,7 @@ begin
     deliveryCity varchar(15) not null,
     datetime timestamp,
     totalCost numeric(5,2) not null default 0,
-    hasDelivered boolean,
+    hasDelivered boolean not null default false,
     constraint verifyBaseSize check (baseSize in (10, 12, 14)),
     constraint fkCustomerId foreign key (customerId) references Customer(id)
   );
@@ -81,12 +81,83 @@ end;
 $$ LANGUAGE plpgsql;
 
 
+create or replace function CreateContractsTable() returns void
+as $$
+begin
+  drop table Contracts;
+  create table Contracts(
+    bakerId char(6),
+    supplierId char(6),
+    isHidden boolean not null default true,
+    constraint fk_bid foreign key (bakerId) references Baker(id),
+    constraint fk_sid foreign key (supplierId) references Supplier(id)
+  );
+end;
+$$ language plpgsql;
+
+
+create or replace function CreateProducesTable() returns void
+as $$
+begin
+  drop table Produces;
+  create table Produces(
+    supplierId char(6),
+    ingredientName varchar(20),
+    regionalProvenance varchar(20),
+    constraint fk_sid foreign key (supplierId) references Supplier(id),
+    constraint fk_in foreign key (ingredientName) references Ingredient(name),
+    constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
+  );
+end;
+$$ language plpgsql;
+
+
+create or replace function CreateOwnsTable() returns void
+as $$
+begin
+  drop table Owns;
+  create table Owns(
+    bakerId char(6),
+    ingredientName varchar(20),
+    regionalProvenance varchar(20),
+    isHidden boolean not null default false,
+    amount integer not null default 0,
+    constraint fk_sid foreign key (bakerId) references Baker(id),
+    constraint fk_in foreign key (ingredientName) references Ingredient(name),
+    constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
+  );
+end;
+$$ language plpgsql;
+
+
+create or replace function CreateContainsTable() returns void
+as $$
+begin
+  drop table Contains;
+  create table Contains(
+    orderNo char(10),
+    ingredientName varchar(20),
+    regionalProvenance varchar(20),
+    constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
+    constraint fk_in foreign key (ingredientName) references Ingredient(name),
+    constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
+  );
+end;
+$$ language plpgsql;
+
+
 create or replace function CreateTables() returns void
 as $$
 begin
   select CreateCustomerTable();
   select CreatePizzaOrderTable();
   select CreateBakerTable();
+  select CreateIngredientTable();
+  select CreateSupplierTable();
+  select CreateContractsTable();
+  select CreateProducesTable();
+  select CreateOwnsTable();
+  select CreateContainsTable();
 end;
 $$ LANGUAGE plpgsql;
 
