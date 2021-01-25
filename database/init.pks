@@ -142,15 +142,19 @@ end;
 $$ language plpgsql;
 
 
-create or replace function CreateContainsTable() returns void
+create or replace function CreateRestocksTable() returns void
 as $$
 begin
-  drop table Contains;
-  create table Contains(
-    orderNo char(10),
+  drop table Restocks;
+  create table Restocks(
+    bakerId char(6),
+    supplierId char(6),
     ingredientName varchar(20),
     regionalProvenance varchar(20),
-    constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
+    datetime timestamp,
+    amount integer not null default 0,
+    constraint fk_bid foreign key (bakerId) references Baker(id),
+    constraint fk_sid foreign key (supplierId) references Supplier(id),
     constraint fk_in foreign key (ingredientName) references Ingredient(name),
     constraint fk_rp foreign key (regionalProvenance) references Ingredient(regionalProvenance)
   );
@@ -170,6 +174,7 @@ begin
   select CreateProducesTable();
   select CreateOwnsTable();
   select CreateContainsTable();
+  select CreateRestocksTable();
 end;
 $$ LANGUAGE plpgsql;
 
@@ -177,8 +182,6 @@ $$ LANGUAGE plpgsql;
 create or replace function PopulateDatabase() returns void
 as $$
 begin
-  insert into Customer values ('156722', 'James Kirk', '01682962010');
-  insert into Baker values ('123456', 'Leonard McCoy', '01712880022');
 end;
 $$ LANGUAGE plpgsql;
 
