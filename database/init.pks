@@ -11,6 +11,7 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
 create or replace function CreatePizzaOrderTable() returns void
 as $$
 begin
@@ -32,6 +33,7 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
 create or replace function CreateBakerTable() returns void
 as $$
 begin
@@ -45,6 +47,38 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
+create or replace function CreateIngredientTable() returns void
+as $$
+begin
+  drop table Ingredient;
+  create table Ingredient(
+    name varchar(20) primary key,
+    regionalProvenance varchar(20) primary key,
+    price numeric(5,2) not null default 0,
+    imageOid oid 
+  );
+end;
+$$ LANGUAGE plpgsql;
+
+
+create or replace function CreateSupplierTable() returns void
+as $$
+begin
+  drop table Supplier;
+  create table Supplier(
+    id char(6) primary key,
+    fullname varchar(20),
+    mobileNo char(11),
+    address varchar(50),
+    imageOid oid,
+    specialIngredientName varchar(20),
+    specialIngredientRP varchar(20)  
+  );
+end;
+$$ LANGUAGE plpgsql;
+
+
 create or replace function CreateTables() returns void
 as $$
 begin
@@ -54,6 +88,7 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
 create or replace function PopulateDatabase() returns void
 as $$
 begin
@@ -61,6 +96,7 @@ begin
   insert into Baker values ('123456', 'Leonard McCoy', '01712880022');
 end;
 $$ LANGUAGE plpgsql;
+
 
 create or replace function InitDatabase() returns void
 as $$
