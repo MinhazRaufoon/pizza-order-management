@@ -1,9 +1,9 @@
-const { Pool } = require('pg')
-const config = require('../database/db.config.js')
+var pgp = require('pg-promise')()
+var db = pgp(
+  'postgres://amd_project_618537_rw:iewuo8Af@pgsql.hrz.tu-chemnitz.de:5432/amd_project_618537'
+)
 
-const pool = new Pool(config)
-
-pool.query('SELECT * from Customer', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+async function initializeDatabase() {
+  await db.connect()
+  await db.one()
+}
