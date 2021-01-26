@@ -7,7 +7,7 @@ import ShowButton from './ShowButton'
 import Poster from './Poster'
 
 export default function SupplierCard(props) {
-  const { id, name, address, image, isHidden } = props
+  const { id, fullname, mobile, address, image, isHidden } = props
 
   return (
     <div
@@ -17,9 +17,16 @@ export default function SupplierCard(props) {
       <Poster className={styles.poster} imageUrl={image} />
 
       <div className={styles.details}>
-        <h1>{name}</h1>
-        <p>ID: {id}</p>
-        <p>{address}</p>
+        <h1>{fullname}</h1>
+        <p>
+          <b>ID:</b> {id}
+        </p>
+        <p>
+          <b>Address:</b> {address}
+        </p>
+        <p>
+          <b>Mobile:</b> {mobile}
+        </p>
 
         {isHidden && <i>&nbsp;(Hidden to me)</i>}
 

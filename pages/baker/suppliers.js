@@ -1,5 +1,5 @@
 import SupplierCard from '../../components/SupplierCard'
-import { getSuppliers } from '../../lib'
+import { makeGetRequest } from '../../lib'
 import styles from '../../styles/Suppliers.module.css'
 
 export default function Suppliers({ suppliers }) {
@@ -19,7 +19,7 @@ export default function Suppliers({ suppliers }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      suppliers: await getSuppliers(),
+      suppliers: await makeGetRequest('api/suppliers'),
     },
   }
 }

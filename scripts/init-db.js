@@ -11,6 +11,8 @@ db.connect().then(() => {
   glob('database/**/*.pks', {}, async (err, files) => {
     await db.any('select DeleteTables();')
 
+    await db.any(fs.readFileSync('database/init.pks', { encoding: 'utf-8' }))
+
     await db.any(`
       select CreateTables();
       select PopulateDatabase();

@@ -1,4 +1,4 @@
-create or replace function getSuppliers() returns setof Supplier
+create or replace function getSuppliers() returns setof json
 as $$
 declare
   supplierCursor cursor for select * from Supplier;
@@ -8,7 +8,7 @@ begin
   loop
     fetch from supplierCursor into vSupplier;
     exit when not found;
-    return next vSupplier;
+    return next row_to_json(vSupplier);
   end loop;
 end;
 $$ LANGUAGE plpgsql;

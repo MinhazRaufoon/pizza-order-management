@@ -207,10 +207,10 @@ begin
   insert into Customer values ('156722', 'James T Kirk', '01682962010', 0);
   insert into Baker values ('331233', 'Jean-Luc Picard', '01712880022', 10.00, 0);
 
-  insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', 'images/wayne.png');
-  insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', 'images/polos.png');
-  insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', 'images/overlook.jpg');
-  insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'images/corleone.jpg');
-  insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'images/gump.png');
+  insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', 'http://localhost:3000/images/wayne.png');
+  insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', 'http://localhost:3000/images/polos.png');
+  insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', 'http://localhost:3000/images/overlook.jpg');
+  insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'http://localhost:3000/images/corleone.jpg');
+  insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'http://localhost:3000/images/gump.png');
 end;
 $$ LANGUAGE plpgsql;
