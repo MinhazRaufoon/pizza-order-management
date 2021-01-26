@@ -155,16 +155,16 @@ $$ language plpgsql;
 create or replace function CreateTables() returns void
 as $$
 begin
-  select CreateCustomerTable();
-  select CreatePizzaOrderTable();
-  select CreateBakerTable();
-  select CreateIngredientTable();
-  select CreateSupplierTable();
-  select CreateContractsTable();
-  select CreateProducesTable();
-  select CreateOwnsTable();
-  select CreateContainsTable();
-  select CreateRestocksTable();
+  perform CreateCustomerTable();
+  perform CreatePizzaOrderTable();
+  perform CreateBakerTable();
+  perform CreateIngredientTable();
+  perform CreateSupplierTable();
+  perform CreateContractsTable();
+  perform CreateProducesTable();
+  perform CreateOwnsTable();
+  perform CreateContainsTable();
+  perform CreateRestocksTable();
 end;
 $$ LANGUAGE plpgsql;
 
