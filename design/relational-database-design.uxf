@@ -44,34 +44,28 @@ totalCost
 hasDelivered
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>200</y><w>80</w><h>360</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;10;10;340;60;340</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>720</y><w>180</w><h>130</h></coordinates><panel_attributes>Ingredient
---
-
-_id_
-
-name
-image
-
---
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>510</y><w>150</w><h>100</h></coordinates><panel_attributes>Contains
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>200</y><w>80</w><h>360</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;10;10;340;60;340</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>540</y><w>150</w><h>110</h></coordinates><panel_attributes>Contains
 --
 
 *orderNo*
-*specificIngredientId*
+
+*ingredientVarietyId*
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>540</y><w>350</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>30;30;10;30;10;140;230;140;230;10;330;10</additional_attributes></element><element><id>Relation</id><coordinates><x>10</x><y>420</y><w>320</w><h>160</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>300;140;260;140;260;10;10;10;10;110;50;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>440</y><w>160</w><h>100</h></coordinates><panel_attributes>Produces
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>10</x><y>420</y><w>320</w><h>190</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>300;170;260;170;260;10;10;10;10;110;50;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1000</x><y>440</y><w>160</w><h>110</h></coordinates><panel_attributes>Produces
 --
 
 *supplierId*
-*specificIngredientId*
+*ingredientVarietyId*
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>200</y><w>120</w><h>310</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10;10;290;100;290</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>490</y><w>240</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;130;60;130;10;220;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>330</y><w>150</w><h>130</h></coordinates><panel_attributes>Owns
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>200</y><w>120</w><h>310</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10;10;290;100;290</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>490</y><w>240</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;130;60;130;10;220;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>330</y><w>150</w><h>160</h></coordinates><panel_attributes>Owns
 --
 
 *bakerId*
-*specificIngredientId*
+
+*ingredientVarietyId*
+
 isHidden
 amount
 
@@ -84,29 +78,38 @@ amount
 isHidden
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>39</y><w>370</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;130;10;130;10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>49</y><w>240</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>220;150;160;150;160;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>169</y><w>70</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;10;10;210;50;210</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>379</y><w>180</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;160;60;160;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>209</y><w>180</w><h>190</h></coordinates><panel_attributes>Restocks
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>39</y><w>370</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;130;10;130;10;10;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>49</y><w>240</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>220;150;160;150;160;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>169</y><w>70</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;10;10;210;50;210</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>399</y><w>180</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;140;60;140;60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>209</y><w>180</w><h>190</h></coordinates><panel_attributes>Restocks
 --
 
 *bakerId*
 
 *supplierId*
 
-*specificIngredientId*
+*ingredientVarietyId*
 
 datetime
 amount
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>170</y><w>180</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10;70;90;160;90</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>210</y><w>240</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>220;10;70;10;70;80;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>310</y><w>90</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;230;70;230;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>500</y><w>180</w><h>180</h></coordinates><panel_attributes>SpecificIngredient
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>170</y><w>180</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10;70;90;160;90</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>210</y><w>240</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>220;10;70;10;70;80;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>310</y><w>90</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;230;70;230;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>500</y><w>180</w><h>150</h></coordinates><panel_attributes>IngredientVariety
 --
 
 _id_
 
 *ingredientId*
 
-name
-image
+region
+
 price
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>570</y><w>90</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;200;10;200;10;10;70;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>539</y><w>180</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;10;60;10;60;80;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>620</y><w>180</w><h>130</h></coordinates><panel_attributes>Ingredient
+--
+
+_id_
+name
+image
+shortImage
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>570</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;</panel_attributes><additional_attributes>10;10;70;10;70;100;130;100</additional_attributes></element></diagram>

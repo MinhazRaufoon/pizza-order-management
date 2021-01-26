@@ -37,30 +37,30 @@ datetime
 totalCost
 hasDelivered
 
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>680</y><w>210</w><h>120</h></coordinates><panel_attributes>Ingredient
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>880</y><w>210</w><h>120</h></coordinates><panel_attributes>IngredientVariety
 --
 
 id { PK }
-name
-image
+region
+price
 
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>309</y><w>80</w><h>140</h></coordinates><panel_attributes>lt=-
 m1=1..1
 m2=0..*
-creates &gt;</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>639</y><w>450</w><h>360</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+creates &gt;</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>639</y><w>450</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..*
 m2=1..*
-contains &gt;</panel_attributes><additional_attributes>10;10;10;330;430;330</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>319</y><w>140</w><h>640</h></coordinates><panel_attributes>lt=-
+contains &gt;</panel_attributes><additional_attributes>10;10;10;310;430;311</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>319</y><w>140</w><h>630</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=0..*
-owns &gt;</panel_attributes><additional_attributes>10;10;10;610;120;610</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>390</y><w>100</w><h>80</h></coordinates><panel_attributes>
+owns &gt;</panel_attributes><additional_attributes>10;10;10;600;120;600</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>390</y><w>100</w><h>80</h></coordinates><panel_attributes>
 --
 isHidden
 amount
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>420</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>319</y><w>230</w><h>640</h></coordinates><panel_attributes>lt=-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>420</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>319</y><w>230</w><h>680</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-produces &gt;</panel_attributes><additional_attributes>150;10;150;610;10;610</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>249</y><w>260</w><h>50</h></coordinates><panel_attributes>lt=-
+produces &gt;</panel_attributes><additional_attributes>150;10;150;650;10;650</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>249</y><w>260</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..*
 m2=1..*
 contracts &gt;</panel_attributes><additional_attributes>10;20;240;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>300</y><w>100</w><h>60</h></coordinates><panel_attributes>
@@ -68,20 +68,19 @@ contracts &gt;</panel_attributes><additional_attributes>10;20;240;20</additional
 isHidden
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>319</y><w>110</w><h>260</h></coordinates><panel_attributes>lt=-
 m1=1..1</panel_attributes><additional_attributes>10;10;10;240;90;240</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>319</y><w>140</w><h>260</h></coordinates><panel_attributes>lt=-
-m1=1..1</panel_attributes><additional_attributes>100;10;100;240;10;240</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>609</y><w>180</w><h>280</h></coordinates><panel_attributes>lt=-
-m1=1..1</panel_attributes><additional_attributes>90;260;90;230;10;230;10;40;160;40;160;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>400</y><w>100</w><h>80</h></coordinates><panel_attributes>
+m1=1..1</panel_attributes><additional_attributes>100;10;100;240;10;240</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>609</y><w>130</w><h>290</h></coordinates><panel_attributes>lt=-
+m1=1..1</panel_attributes><additional_attributes>70;270;70;220;10;220;10;40;110;40;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>580</x><y>400</y><w>100</w><h>80</h></coordinates><panel_attributes>
 --
 datetime
 amount
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>260</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>550</x><y>500</y><w>150</w><h>120</h></coordinates><panel_attributes>type=decision
-restocks</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>470</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>870</y><w>210</w><h>130</h></coordinates><panel_attributes>SpecificIngredient
+restocks</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>470</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>680</y><w>140</w><h>130</h></coordinates><panel_attributes>Ingredient
 --
 
 id { PK }
 name
-price
 image
+shortImage
 
---
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>790</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>800</y><w>100</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-
 { Mandatory }</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element></diagram>

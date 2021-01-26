@@ -53,23 +53,22 @@ begin
   create table Ingredient(
     id char(6) primary key,
     name varchar(20),
-    image varchar(100) 
+    image varchar(100),
+    shortImage varchar(100)
   );
 end;
 $$ LANGUAGE plpgsql;
 
 
-create or replace function CreateSpecificIngredientTable() returns void
+create or replace function CreateIngredientVarietyTable() returns void
 as $$
 begin
-  create table SpecificIngredient(
+  create table IngredientVariety(
     id char(6) primary key,
     ingredientId char(6),
-    name varchar(20),
+    region varchar(20),
     price numeric(5,2) not null default 0,
-    image varchar(100),
-
-    constraint fk_ingid foreign key (ingredientId) references Ingredient(id)
+    constraint fk_iid foreign key (ingredientId) references Ingredient(id)
   );
 end;
 $$ LANGUAGE plpgsql;
@@ -109,10 +108,9 @@ as $$
 begin
   create table Produces(
     supplierId char(6),
-    specificIngredientId char(6),
-
+    ingredientVarietyId char(6),
     constraint fk_sid foreign key (supplierId) references Supplier(id),
-    constraint fk_spingid foreign key (specificIngredientId) references SpecificIngredient(id)
+    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
   );
 end;
 $$ language plpgsql;
@@ -123,12 +121,11 @@ as $$
 begin
   create table Owns(
     bakerId char(6),
-    specificIngredientId char(6),
+    ingredientVarietyId char(6),
     isHidden boolean not null default false,
     amount integer not null default 0,
-
-    constraint fk_sid foreign key (bakerId) references Baker(id),
-    constraint fk_spingid foreign key (specificIngredientId) references SpecificIngredient(id)
+    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id),
+    constraint fk_sid foreign key (bakerId) references Baker(id)
   );
 end;
 $$ language plpgsql;
@@ -139,10 +136,9 @@ as $$
 begin
   create table Contains(
     orderNo char(10),
-    specificIngredientId char(6),
-
+    ingredientVarietyId char(6),
     constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
-    constraint fk_spingid foreign key (specificIngredientId) references SpecificIngredient(id)
+    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
   );
 end;
 $$ language plpgsql;
@@ -154,12 +150,12 @@ begin
   create table Restocks(
     bakerId char(6),
     supplierId char(6),
-    specificIngredientId char(6),
+    ingredientVarietyId char(6),
     datetime timestamp,
     amount integer not null default 0,
     constraint fk_bid foreign key (bakerId) references Baker(id),
     constraint fk_sid foreign key (supplierId) references Supplier(id),
-    constraint fk_spingid foreign key (specificIngredientId) references SpecificIngredient(id)
+    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
   );
 end;
 $$ language plpgsql;
@@ -172,7 +168,7 @@ begin
   perform CreatePizzaOrderTable();
   perform CreateBakerTable();
   perform CreateIngredientTable();
-  perform CreateSpecificIngredientTable();
+  perform CreateIngredientVarietyTable();
   perform CreateSupplierTable();
   perform CreateContractsTable();
   perform CreateProducesTable();
@@ -191,7 +187,7 @@ begin
   drop table Owns cascade;
   drop table Contains cascade;
   drop table Restocks cascade;
-  drop table SpecificIngredient cascade;
+  drop table IngredientVariety cascade;
   drop table Ingredient cascade;
   drop table Baker cascade;
   drop table PizzaOrder cascade;
@@ -214,9 +210,13 @@ begin
   insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'https://i.imgur.com/HkgIWAi.png');
 
   insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg');
-  insert into Ingredient values ('100002', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png');
-  insert into Ingredient values ('100003', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg');
-  insert into Ingredient values ('100004', 'Olive', 'https://i.imgur.com/ndai0kk.png');
-  insert into Ingredient values ('100005', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg');
+  insert into Ingredient values ('100002', 'Olive', 'https://i.imgur.com/ndai0kk.png');
+  insert into Ingredient values ('100003', 'Sausage', 'https://i.imgur.com/WsEascF.jpg');
+  insert into Ingredient values ('100004', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png');
+  insert into Ingredient values ('100005', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg');
+  insert into Ingredient values ('100006', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg');
+  insert into Ingredient values ('100007', 'Onion', 'https://i.imgur.com/TpoJTaB.jpg');
+  insert into Ingredient values ('100008', 'Salami', 'https://i.imgur.com/RMr7423.jpg');
+  
 end;
 $$ LANGUAGE plpgsql;
