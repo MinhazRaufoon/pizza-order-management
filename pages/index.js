@@ -13,13 +13,13 @@ export default function Home() {
       <RolePicker
         title="Pizza Baker"
         href="/baker"
-        backgroundImage="/images/baker.png"
+        backgroundImage="https://i.imgur.com/1JfJjbJ.png"
       />
 
       <RolePicker
         title="Pizza Buyer"
         href="/customer"
-        backgroundImage="/images/customer.png"
+        backgroundImage="https://i.imgur.com/RhttbuZ.png"
       />
     </section>
   )

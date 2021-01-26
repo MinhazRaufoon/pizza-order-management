@@ -17,7 +17,7 @@ export default function Baker(props) {
         details={recentOrderSummary}
         actionLabel="View all orders"
         href="/baker/recent"
-        poster="/images/recent-orders-nav-card.jpg"
+        poster="https://i.imgur.com/QCDFaom.jpg"
       />
 
       <NavCard
@@ -26,7 +26,7 @@ export default function Baker(props) {
         details={ingredientsSummary}
         actionLabel="Manage Ingredients"
         href="/baker/ingredients"
-        poster="/images/ingredients-nav-card.jpg"
+        poster="https://i.imgur.com/0EJJlau.jpg"
       />
 
       <NavCard
@@ -35,7 +35,7 @@ export default function Baker(props) {
         details={suppliersSummary}
         actionLabel="Manage your suppliers"
         href="/baker/suppliers"
-        poster="/images/supplier-nav-card.jpg"
+        poster="https://i.imgur.com/sikmb8g.jpg"
       />
     </section>
   )

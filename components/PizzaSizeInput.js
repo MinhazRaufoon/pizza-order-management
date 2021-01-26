@@ -9,7 +9,7 @@ export default function PizzaSizeInput(props) {
         isSelected ? styles.active : ''
       }`}
     >
-      <img src="/images/pizza-base.png" alt="pizza base" {...rest} />
+      <img src="https://i.imgur.com/MXhCRTa.png" alt="pizza base" {...rest} />
       <h3>{size}"</h3>
     </div>
   )

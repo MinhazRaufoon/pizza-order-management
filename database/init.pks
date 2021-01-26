@@ -207,10 +207,16 @@ begin
   insert into Customer values ('156722', 'James T Kirk', '01682962010', 0);
   insert into Baker values ('331233', 'Jean-Luc Picard', '01712880022', 10.00, 0);
 
-  insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', 'http://localhost:3000/images/wayne.png');
-  insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', 'http://localhost:3000/images/polos.png');
-  insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', 'http://localhost:3000/images/overlook.jpg');
-  insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'http://localhost:3000/images/corleone.jpg');
-  insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'http://localhost:3000/images/gump.png');
+  insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', 'https://i.imgur.com/uLrNsH0.jpg');
+  insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', 'https://i.imgur.com/FircXQ5.png');
+  insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', 'https://i.imgur.com/OKUp4P9.jpg');
+  insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'https://i.imgur.com/1IhuO6n.jpg');
+  insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'https://i.imgur.com/HkgIWAi.png');
+
+  insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg');
+  insert into Ingredient values ('100002', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png');
+  insert into Ingredient values ('100003', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg');
+  insert into Ingredient values ('100004', 'Olive', 'https://i.imgur.com/ndai0kk.png');
+  insert into Ingredient values ('100005', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg');
 end;
 $$ LANGUAGE plpgsql;
