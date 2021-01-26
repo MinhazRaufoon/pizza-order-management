@@ -94,7 +94,7 @@ begin
   create table Contracts(
     bakerId char(6),
     supplierId char(6),
-    isHidden boolean not null default true,
+    isHidden boolean not null default false,
 
     constraint fk_bid foreign key (bakerId) references Baker(id),
     constraint fk_sid foreign key (supplierId) references Supplier(id)
@@ -201,13 +201,19 @@ create or replace function PopulateDatabase() returns void
 as $$
 begin
   insert into Customer values ('156722', 'James T Kirk', '01682962010', 0);
-  insert into Baker values ('331233', 'Jean-Luc Picard', '01712880022', 10.00, 0);
+  insert into Baker values ('666666', 'Jean-Luc Picard', '01712880022', 10.00, 0);
 
   insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', 'https://i.imgur.com/uLrNsH0.jpg');
   insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', 'https://i.imgur.com/FircXQ5.png');
   insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', 'https://i.imgur.com/OKUp4P9.jpg');
   insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'https://i.imgur.com/1IhuO6n.jpg');
   insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'https://i.imgur.com/HkgIWAi.png');
+
+  insert into Contracts values ('666666', '666321');
+  insert into Contracts values ('666666', '661321');
+  insert into Contracts values ('666666', '532422');
+  insert into Contracts values ('666666', '764534');
+  insert into Contracts values ('666666', '524524');
 
   insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg', 'https://i.imgur.com/PO6Se9f.png');
   insert into Ingredient values ('100002', 'Olive', 'https://i.imgur.com/ndai0kk.png', 'https://i.imgur.com/m20d1tq.png');

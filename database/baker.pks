@@ -1,7 +1,10 @@
-create or replace function getSuppliers() returns setof json
+create or replace function getSuppliers(vBakerId char(6)) returns setof json
 as $$
 declare
-  supplierCursor cursor for select * from Supplier;
+  supplierCursor cursor for 
+    select id, fullname, mobile, address, image, isHidden 
+    from Supplier join Contracts on Supplier.id = Contracts.supplierId
+    where bakerId = vBakerId;
   vSupplier Supplier;
 begin
   open supplierCursor;

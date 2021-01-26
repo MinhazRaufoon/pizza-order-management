@@ -22,7 +22,9 @@ export default function BakerIngredient(props) {
         <h1>{name}</h1>
         {isHidden && <i>&nbsp;(Hidden to customers)</i>}
 
-        <div className={styles.models}>
+        {/**
+         * 
+         * <div className={styles.models}>
           {models.map((model, index) => (
             <div key={model.name || index} className={styles.modelInfo}>
               {hasMultipleModels && (
@@ -41,6 +43,7 @@ export default function BakerIngredient(props) {
             </div>
           ))}
         </div>
+         */}
       </div>
     </div>
   )

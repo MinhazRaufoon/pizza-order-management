@@ -19,7 +19,7 @@ export default function Suppliers({ suppliers }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      suppliers: await makeGetRequest('api/suppliers'),
+      suppliers: await makeGetRequest('api/baker/suppliers'),
     },
   }
 }
