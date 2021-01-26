@@ -3,7 +3,7 @@ as $$
 begin
   create table Customer (
     id char(6) primary key,
-    fullname varchar(20),
+    fullname varchar(50),
     mobile char(11),
     totalOrders integer not null
   );
@@ -38,7 +38,7 @@ as $$
 begin
   create table Baker(
     id char(6) primary key,
-    fullname varchar(20),
+    fullname varchar(50),
     mobile char(11),
     salary numeric(5,2) not null default 0,
     totalIngredients integer not null
@@ -53,7 +53,7 @@ begin
   create table Ingredient(
     id char(6) primary key,
     name varchar(20),
-    image oid 
+    image varchar(100) 
   );
 end;
 $$ LANGUAGE plpgsql;
@@ -67,7 +67,7 @@ begin
     ingredientId char(6),
     name varchar(20),
     price numeric(5,2) not null default 0,
-    image oid,
+    image varchar(100),
 
     constraint fk_ingid foreign key (ingredientId) references Ingredient(id)
   );
@@ -80,10 +80,10 @@ as $$
 begin
   create table Supplier(
     id char(6) primary key,
-    fullname varchar(20),
+    fullname varchar(50),
     mobile char(11),
     address varchar(50),
-    image oid
+    image varchar(100)
   );
 end;
 $$ LANGUAGE plpgsql;
@@ -183,17 +183,34 @@ end;
 $$ LANGUAGE plpgsql;
 
 
-create or replace function PopulateDatabase() returns void
+create or replace function DeleteTables() returns void
 as $$
 begin
+  drop table Contracts;
+  drop table Produces;
+  drop table Owns;
+  drop table Contains;
+  drop table Restocks;
+  drop table Supplier;
+  drop table SpecificIngredient;
+  drop table Ingredient;
+  drop table Baker;
+  drop table PizzaOrder;
+  drop table Customer;
 end;
 $$ LANGUAGE plpgsql;
 
 
-create or replace function InitDatabase() returns void
+create or replace function PopulateDatabase() returns void
 as $$
 begin
-  perform CreateTables();
-  perform PopulateDatabase();
+  insert into Customer values ('156722', 'James T Kirk', '01682962010', 0);
+  insert into Baker values ('331233', 'Jean-Luc Picard', '01712880022', 10.00, 0);
+
+  insert into Supplier values ('666321', 'Wayne Enterprise', '01712882222', 'Chemnitz 09126', '/images/wayne.png');
+  insert into Supplier values ('661321', 'Lost Pollos Hermanos', '01712885522', 'Dresden 09126', '/images/polos.png');
+  insert into Supplier values ('532422', 'Overlook Hotel', '01532882222', 'Leipzig 09126', '/images/overlook.jpg');
+  insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', '/images/corleone.jpg');
+  insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', '/images/gump.png');
 end;
 $$ LANGUAGE plpgsql;
