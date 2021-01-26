@@ -209,14 +209,16 @@ begin
   insert into Supplier values ('764534', 'Don Corleone Foundation', '01712833222', 'Zwichau 09126', 'https://i.imgur.com/1IhuO6n.jpg');
   insert into Supplier values ('524524', 'Forrest Gump GmbH', '01712882112', 'Berlin 09126', 'https://i.imgur.com/HkgIWAi.png');
 
-  insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg');
-  insert into Ingredient values ('100002', 'Olive', 'https://i.imgur.com/ndai0kk.png');
-  insert into Ingredient values ('100003', 'Sausage', 'https://i.imgur.com/WsEascF.jpg');
-  insert into Ingredient values ('100004', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png');
-  insert into Ingredient values ('100005', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg');
-  insert into Ingredient values ('100006', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg');
-  insert into Ingredient values ('100007', 'Onion', 'https://i.imgur.com/TpoJTaB.jpg');
-  insert into Ingredient values ('100008', 'Salami', 'https://i.imgur.com/RMr7423.jpg');
+  insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg', 'https://i.imgur.com/PO6Se9f.png');
+  insert into Ingredient values ('100002', 'Olive', 'https://i.imgur.com/ndai0kk.png', 'https://i.imgur.com/m20d1tq.png');
+  insert into Ingredient values ('100003', 'Sausage', 'https://i.imgur.com/WsEascF.jpg', 'https://i.imgur.com/rwn2Mjw.png');
+  insert into Ingredient values ('100004', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png', 'https://i.imgur.com/AG1nF0w.png');
+  insert into Ingredient values ('100005', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg', 'https://i.imgur.com/M1FY3kb.png');
+  insert into Ingredient values ('100006', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg', 'https://i.imgur.com/92FIwrX.png');
+  insert into Ingredient values ('100007', 'Onion', 'https://i.imgur.com/TpoJTaB.jpg', 'https://i.imgur.com/irHrLsG.png');
+  insert into Ingredient values ('100008', 'Salami', 'https://i.imgur.com/RMr7423.jpg', 'https://i.imgur.com/jkR7Xfx.png');
+  insert into Ingredient values ('100009', 'Steak', 'https://i.imgur.com/Fb8sUtm.jpg', 'https://i.imgur.com/mq928Ug.png');
+  insert into Ingredient values ('100010', 'Pepper', 'https://i.imgur.com/jQ6x51q.jpg', 'https://i.imgur.com/WJD7HvK.png');
   
 end;
 $$ LANGUAGE plpgsql;
