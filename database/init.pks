@@ -216,15 +216,43 @@ begin
   insert into Contracts values ('666666', '524524');
 
   insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg', 'https://i.imgur.com/PO6Se9f.png');
+  insert into IngredientVariety values ('101001', '100001', 'Germany', 2.4);
+  insert into IngredientVariety values ('101002', '100001', 'Italy', 3.5);
+  insert into IngredientVariety values ('101003', '100001', 'USA', 1.2);
+
   insert into Ingredient values ('100002', 'Olive', 'https://i.imgur.com/ndai0kk.png', 'https://i.imgur.com/m20d1tq.png');
+  insert into IngredientVariety values ('102001', '100002', 'Spain', 1.1);
+  insert into IngredientVariety values ('102002', '100002', 'Italy', 3.1);
+  insert into IngredientVariety values ('102003', '100002', 'Turky', 3.2);
+
   insert into Ingredient values ('100003', 'Sausage', 'https://i.imgur.com/WsEascF.jpg', 'https://i.imgur.com/rwn2Mjw.png');
+  insert into IngredientVariety values ('103001', '100003', 'Spain', 4.1);
+  insert into IngredientVariety values ('103002', '100003', 'Italy', 5.1);
+  insert into IngredientVariety values ('103003', '100003', 'Turky', 1.2);
+
   insert into Ingredient values ('100004', 'Bacon', 'https://i.imgur.com/6aSgEqQ.png', 'https://i.imgur.com/AG1nF0w.png');
-  insert into Ingredient values ('100005', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg', 'https://i.imgur.com/M1FY3kb.png');
-  insert into Ingredient values ('100006', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg', 'https://i.imgur.com/92FIwrX.png');
-  insert into Ingredient values ('100007', 'Onion', 'https://i.imgur.com/TpoJTaB.jpg', 'https://i.imgur.com/irHrLsG.png');
-  insert into Ingredient values ('100008', 'Salami', 'https://i.imgur.com/RMr7423.jpg', 'https://i.imgur.com/jkR7Xfx.png');
-  insert into Ingredient values ('100009', 'Steak', 'https://i.imgur.com/Fb8sUtm.jpg', 'https://i.imgur.com/mq928Ug.png');
-  insert into Ingredient values ('100010', 'Pepper', 'https://i.imgur.com/jQ6x51q.jpg', 'https://i.imgur.com/WJD7HvK.png');
+  insert into IngredientVariety values ('104001', '100004', 'Germany', 1.5);
   
+  insert into Ingredient values ('100005', 'Pineapple', 'https://i.imgur.com/AyQ7CLP.jpg', 'https://i.imgur.com/M1FY3kb.png');
+  insert into IngredientVariety values ('105001', '100005', 'Russia', 1.4);
+  
+  insert into Ingredient values ('100006', 'Mushroom', 'https://i.imgur.com/d6oFCTu.jpg', 'https://i.imgur.com/92FIwrX.png');
+  insert into IngredientVariety values ('106001', '100006', 'Africa', 1.9);
+  
+  insert into Ingredient values ('100007', 'Onion', 'https://i.imgur.com/TpoJTaB.jpg', 'https://i.imgur.com/irHrLsG.png');
+  insert into IngredientVariety values ('107001', '100007', 'Bangladesh', 0.5);
+  
+  insert into Ingredient values ('100008', 'Salami', 'https://i.imgur.com/RMr7423.jpg', 'https://i.imgur.com/jkR7Xfx.png');
+  insert into IngredientVariety values ('108001', '100008', 'Italy', 2.3);
+  insert into IngredientVariety values ('108002', '100008', 'UK', 1.1);
+  insert into IngredientVariety values ('108003', '100008', 'USA', 1.7);
+
+  insert into Ingredient values ('100009', 'Steak', 'https://i.imgur.com/Fb8sUtm.jpg', 'https://i.imgur.com/mq928Ug.png');
+  insert into IngredientVariety values ('109001', '100009', 'Germany', 6.2);
+  insert into IngredientVariety values ('109002', '100009', 'Italy', 4.5);
+  insert into IngredientVariety values ('109003', '100009', 'Turky', 5.5);
+
+  insert into Ingredient values ('100010', 'Pepper', 'https://i.imgur.com/jQ6x51q.jpg', 'https://i.imgur.com/WJD7HvK.png');
+  insert into IngredientVariety values ('110003', '100010', 'Germany', 2.5);  
 end;
 $$ LANGUAGE plpgsql;
