@@ -9,6 +9,7 @@
     "start": "npm run initdb && npm run dev"
   },
   "dependencies": {
+    "glob": "^7.1.6",
     "next": "10.0.5",
     "pg-promise": "^10.9.1",
     "react": "17.0.1",
