@@ -17,9 +17,9 @@ export default async (req, res) => {
     } = JSON.parse(req.body)
 
     const varietyIdAsPostgresList =
-      '{' + JSON.stringify(ingredientVarietyIds.join(',')) + '}'
+      'ARRAY[' + ingredientVarietyIds.map((id) => `'${id}'`).join(',') + ']'
 
-    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', '${varietyIdAsPostgresList}', '${houseNo}', '${postcode}', '${city}', '${street}')`
+    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${postcode}', '${city}', '${street}')`
 
     console.log(queryString)
 

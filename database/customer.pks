@@ -30,16 +30,25 @@ $$ LANGUAGE plpgsql;
 create or replace function createPizzaOrder(
   vCustomerId char(6), 
   vPizzaSize integer, 
-  vVarietyIdList char(6) array,
+  vVarietyIdList char(6) [],
   vDeliveryHouseNo varchar(10),
   vDeliveryStreet varchar(30),
   vDeliveryPostcode varchar(10),
   vDeliveryCity varchar(20)
 ) 
-returns json
+returns void
 as $$
 declare
+  vOrderNo integer;
+  vVarietyId varchar(6);
 begin
-  return json_build_object("x", vX);
+  insert into 
+    PizzaOrder(customerId, baseSize, deliveryHouseNo, deliveryStreet, deliveryPostcode, deliveryCity, datetime, totalCost, hasDelivered)
+    values(vCustomerId, vPizzaSize, vDeliveryHouseNo, vDeliveryStreet, vDeliveryPostcode, vDeliveryCity, now(), 0, true)
+    returning orderNo into vOrderNo;  
+  
+  foreach vVarietyId in array vVarietyIdList loop
+    insert into Contains values(vOrderNo, vVarietyId);
+  end loop;
 end;
 $$ language plpgsql

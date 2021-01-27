@@ -15,7 +15,7 @@ create or replace function CreatePizzaOrderTable() returns void
 as $$
 begin
   create table PizzaOrder(
-    orderNo char(10) not null primary key,
+    orderNo serial primary key,
     customerId char(6),
     baseSize integer not null,
     deliveryHouseNo varchar(10) not null,
@@ -135,7 +135,7 @@ create or replace function CreateContainsTable() returns void
 as $$
 begin
   create table Contains(
-    orderNo char(10),
+    orderNo serial,
     ingredientVarietyId char(6),
     constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
     constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)

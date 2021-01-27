@@ -34,7 +34,7 @@ deliveryAddress
     postCode
     city
 datetime
-totalCost
+/totalCost
 hasDelivered
 
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>880</y><w>210</w><h>120</h></coordinates><panel_attributes>IngredientVariety
