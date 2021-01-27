@@ -12,7 +12,7 @@ export default function CustomerIngredient(props) {
     >
       <img className={styles.icon} src={image} />
       <b>{label}</b>
-      <span>{price} €</span>
+      <span className={styles.priceTag}>{price} €</span>
       <button onClick={isSelected ? remove : select}>
         {isSelected ? 'Remove' : 'Add'}
       </button>

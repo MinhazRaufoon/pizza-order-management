@@ -1,12 +1,16 @@
 import CustomerIngredient from '../components/CustomerIngredient'
 import PizzaSizeInput from '../components/PizzaSizeInput'
 import usePizzaOrderForm from '../hooks/usePizzaOrderForm'
-import { getAvailableIngredients, getCustomerData } from '../lib'
+import {
+  getAvailableIngredients,
+  getCustomerData,
+  makeGetRequest,
+} from '../lib'
 import styles from '../styles/Customer.module.css'
 
 const PIZZA_SIZES = [10, 12, 14]
 
-export default function Customer({ availableIngredients, customerInfo }) {
+export default function Customer({ availableIngredients }) {
   const {
     getCurrentPizzaSize,
     isIngredientSelected,
@@ -16,8 +20,6 @@ export default function Customer({ availableIngredients, customerInfo }) {
     getOrderSummary,
     getTotalCost,
   } = usePizzaOrderForm()
-
-  console.log(customerInfo)
 
   return (
     <section className={styles.Customer}>
@@ -41,56 +43,19 @@ export default function Customer({ availableIngredients, customerInfo }) {
         <h2>2. Choose your favorite ingredients</h2>
 
         <div className={styles.ingredients}>
-          {availableIngredients.map((ingredient) => {
-            if (ingredient.models) {
-              return ingredient.models.map((model) => (
-                <CustomerIngredient
-                  key={ingredient.name + model.name}
-                  label={`${ingredient.name} (${model.name})`}
-                  price={model.price}
-                  image={model.icon}
-                  isSelected={isIngredientSelected(ingredient.name, model.name)}
-                  select={() =>
-                    selectPizzaIngredient(
-                      ingredient.name,
-                      model.name,
-                      model.price
-                    )
-                  }
-                  remove={() =>
-                    unselectPizzaIngredient(
-                      ingredient.name,
-                      model.name,
-                      model.price
-                    )
-                  }
-                />
-              ))
-            } else
-              return (
-                <CustomerIngredient
-                  key={ingredient.name}
-                  label={ingredient.name}
-                  price={ingredient.price}
-                  image={ingredient.icon}
-                  isSelected={isIngredientSelected(ingredient.name)}
-                  select={() =>
-                    selectPizzaIngredient(
-                      ingredient.name,
-                      null,
-                      ingredient.price
-                    )
-                  }
-                  remove={() =>
-                    unselectPizzaIngredient(
-                      ingredient.name,
-                      null,
-                      ingredient.price
-                    )
-                  }
-                />
-              )
-          })}
+          {availableIngredients.map(
+            ({ id, varietyId, name, price, region, image }) => (
+              <CustomerIngredient
+                key={varietyId}
+                label={`${name} (${region})`}
+                price={price}
+                image={image}
+                isSelected={isIngredientSelected(name, region)}
+                select={() => selectPizzaIngredient(name, region, price)}
+                remove={() => unselectPizzaIngredient(name, region, price)}
+              />
+            )
+          )}
           <hr />
           <h3 className={styles.totalPrice}>Total: {getTotalCost()} €</h3>
         </div>
@@ -104,10 +69,10 @@ export default function Customer({ availableIngredients, customerInfo }) {
 }
 
 export async function getServerSideProps(context) {
+  const availableIngredients = await makeGetRequest('api/customer/ingredients')
   return {
     props: {
-      availableIngredients: await getAvailableIngredients(),
-      customerInfo: await getCustomerData(),
+      availableIngredients,
     },
   }
 }

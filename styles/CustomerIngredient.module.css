@@ -7,7 +7,7 @@
 }
 
 .icon {
-  width: 100px;
+  width: 60px;
   border-radius: 5px;
 }
 
@@ -20,6 +20,12 @@
   background-color: #222;
   color: white;
   font-weight: bold;
+}
+
+.priceTag {
+  color: crimson;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .checked {
