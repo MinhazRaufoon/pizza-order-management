@@ -21,17 +21,10 @@ export default async (req, res) => {
 
     const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${postcode}', '${city}', '${street}')`
 
-    console.log(queryString)
-
     const response = await db.any(queryString)
-    console.log(response)
 
     res.statusCode = 200
-    res.json({
-      success: false,
-      error: false,
-      reason: false,
-    })
+    res.json(response.createpizzaorder)
   } catch (err) {
     console.error(err)
     res.statusCode = 404
