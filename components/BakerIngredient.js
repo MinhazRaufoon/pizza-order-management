@@ -24,7 +24,7 @@ export default function BakerIngredient(props) {
           {varieties.map(({ region, amount, price }) => (
             <div key={region} className={styles.modelInfo}>
               <Poster className={styles.modelPoster} imageUrl={shortImage} />
-              <b>{region}&nbsp;</b>
+              <b>From {region}&nbsp;</b>
               <label>Amount: {amount}</label>
               <label>Price: {price}</label>
               <br />

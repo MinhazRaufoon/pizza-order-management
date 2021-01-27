@@ -25,7 +25,8 @@ declare
       json_build_object(
         'id', ingredientVarietyId,
         'price', price,
-        'region', region
+        'region', region,
+        'amount', amount
       )
     ) as varieties
     from Owns join IngredientVariety on Owns.ingredientVarietyId = IngredientVariety.id  

@@ -30,7 +30,8 @@
 }
 
 .modelPoster {
-  height: 50px;
+  height: 60px;
+  width: 60px;
   border-radius: 5px;
   background-size: contain !important;
   background-position: left !important;
@@ -40,8 +41,10 @@
 .modelInfo {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
   margin-right: 1rem;
+  padding: 1rem;
 }
 
 .BakerIngredient button {
