@@ -44,15 +44,15 @@ export default function Customer({ availableIngredients }) {
 
         <div className={styles.ingredients}>
           {availableIngredients.map(
-            ({ id, varietyId, name, price, region, image }) => (
+            ({ varietyId, name, price, region, image }) => (
               <CustomerIngredient
                 key={varietyId}
                 label={`${name} (${region})`}
                 price={price}
                 image={image}
-                isSelected={isIngredientSelected(name, region)}
-                select={() => selectPizzaIngredient(name, region, price)}
-                remove={() => unselectPizzaIngredient(name, region, price)}
+                isSelected={isIngredientSelected(varietyId)}
+                select={() => selectPizzaIngredient(varietyId, price)}
+                remove={() => unselectPizzaIngredient(varietyId, price)}
               />
             )
           )}

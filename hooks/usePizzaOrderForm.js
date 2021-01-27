@@ -25,7 +25,7 @@ function reducePizzaOrder(state, action) {
 
         ingredientsMap: {
           ...state.ingredientsMap,
-          [action.name + (action.rp ? ` (${action.rp})` : '')]: true,
+          [action.id]: true,
         },
 
         totalPrice: state.totalPrice + action.price,
@@ -37,9 +37,7 @@ function reducePizzaOrder(state, action) {
         ...state,
         totalPrice: state.totalPrice - action.price,
       }
-      delete newState.ingredientsMap[
-        action.name + (action.rp ? ` (${action.rp})` : '')
-      ]
+      delete newState.ingredientsMap[action.id]
       break
   }
 
@@ -62,11 +60,10 @@ export default function usePizzaOrderForm() {
   )
 
   const selectPizzaIngredient = useCallback(
-    (name, rp, price) => {
+    (id, price) => {
       dispatch({
         type: 'ACTION_SELECT_PIZZA_INGREDIENT',
-        name,
-        rp,
+        id,
         price,
       })
     },
@@ -74,11 +71,10 @@ export default function usePizzaOrderForm() {
   )
 
   const unselectPizzaIngredient = useCallback(
-    (name, rp, price) => {
+    (id, price) => {
       dispatch({
         type: 'ACTION_UNSELECT_PIZZA_INGREDIENT',
-        name,
-        rp,
+        id,
         price,
       })
     },
@@ -86,8 +82,8 @@ export default function usePizzaOrderForm() {
   )
 
   const isIngredientSelected = useCallback(
-    (name, rp) => {
-      return state.ingredientsMap[name + (rp ? ` (${rp})` : '')]
+    (id) => {
+      return state.ingredientsMap[id]
     },
     [state]
   )
