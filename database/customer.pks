@@ -36,12 +36,23 @@ create or replace function createPizzaOrder(
   vDeliveryPostcode varchar(10),
   vDeliveryCity varchar(20)
 ) 
-returns void
+returns json
 as $$
 declare
   vOrderNo integer;
   vVarietyId varchar(6);
+  vAmount integer;
 begin
+  foreach vVarietyId in array vVarietyIdList loop
+    vAmount := getAmountOfIngredientVariety('666666', vVarietyId);
+    if vAmount = 0 then
+      raise exception using
+        errcode='P0002',
+        message='Some ingredients are out of stock',
+        hint='Please refresh te page';
+    end if;
+  end loop;
+
   insert into 
     PizzaOrder(customerId, baseSize, deliveryHouseNo, deliveryStreet, deliveryPostcode, deliveryCity, datetime, totalCost, hasDelivered)
     values(vCustomerId, vPizzaSize, vDeliveryHouseNo, vDeliveryStreet, vDeliveryPostcode, vDeliveryCity, now(), 0, true)
@@ -50,5 +61,10 @@ begin
   foreach vVarietyId in array vVarietyIdList loop
     insert into Contains values(vOrderNo, vVarietyId);
   end loop;
+
+  return json_build_object('success', true);
+exception
+  when sqlstate 'P0002' then
+    return json_build_object('error', true);
 end;
 $$ language plpgsql

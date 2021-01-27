@@ -84,3 +84,14 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
+create or replace function getAmountOfIngredientVariety(vBakerId char(6), vVarietyId char(6)) returns integer
+as $$
+declare
+  vAmount integer;
+begin
+  select amount into vAmount
+  from Owns where bakerId = vBakerId and ingredientVarietyId = vVarietyId;
+  return vAmount;
+end;
+$$ language plpgsql;
