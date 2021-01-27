@@ -27,7 +27,15 @@ end;
 $$ LANGUAGE plpgsql;
 
 
-create or replace function createPizzaOrder(vCustomerId char(6), vPizzaSize integer, vVarietyIdList char(6) array) 
+create or replace function createPizzaOrder(
+  vCustomerId char(6), 
+  vPizzaSize integer, 
+  vVarietyIdList char(6) array,
+  vDeliveryHouseNo varchar(10),
+  vDeliveryStreet varchar(30),
+  vDeliveryPostcode varchar(10),
+  vDeliveryCity varchar(20)
+) 
 returns json
 as $$
 declare

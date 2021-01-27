@@ -132,10 +132,15 @@ export default function usePizzaOrderForm() {
 
   const submit = useCallback(async () => {
     try {
+      const { houseNo, postcode, city, street, ingredientsMap, size } = state
       const response = await makePostRequest('api/customer/order', {
         customerId: '156722',
-        baseSize: state.size,
-        ingredientVarietyIds: Object.keys(state.ingredientsMap),
+        baseSize: size,
+        ingredientVarietyIds: Object.keys(ingredientsMap),
+        houseNo,
+        postcode,
+        city,
+        street,
       })
       console.log(response)
     } catch (err) {

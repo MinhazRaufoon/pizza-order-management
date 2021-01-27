@@ -6,17 +6,26 @@ export default async (req, res) => {
     res.end(req.method)
   }
   try {
-    const { customerId, baseSize, ingredientVarietyIds } = JSON.parse(req.body)
-    const varietyIdAsPostgresList = JSON.stringify(
-      ingredientVarietyIds.join(',')
-    )
-    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${
-      "'{" + varietyIdAsPostgresList + "}'"
-    })`
+    const {
+      customerId,
+      baseSize,
+      ingredientVarietyIds,
+      houseNo,
+      postcode,
+      city,
+      street,
+    } = JSON.parse(req.body)
+
+    const varietyIdAsPostgresList =
+      '{' + JSON.stringify(ingredientVarietyIds.join(',')) + '}'
+
+    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', '${varietyIdAsPostgresList}', '${houseNo}', '${postcode}', '${city}', '${street}')`
+
     console.log(queryString)
 
     const response = await db.any(queryString)
     console.log(response)
+
     res.statusCode = 200
     res.json({
       success: false,
