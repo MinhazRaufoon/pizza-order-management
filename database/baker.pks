@@ -1,59 +1,45 @@
-create or replace function getSuppliers(vBakerId char(6)) returns setof json
+create or replace function getMySuppliers(vBakerId char(6)) returns setof json
 as $$
 declare
-  supplierCursor cursor for 
-    select id, fullname, mobile, address, image, isHidden 
-    from (
-      Supplier join Contracts on Supplier.id = Contracts.supplierId
-    ) join Produces on Supplier.id = Produces.supplierId
-    where bakerId = vBakerId;
-  vSupplier record;
-begin
-  open supplierCursor;
-  loop
-    fetch from supplierCursor into vSupplier;
-    exit when not found;
-    return next row_to_json(vSupplier);
-  end loop;
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function getIngredients(vBakerId char(6)) returns setof json
-as $$
-declare  
-  ingredientVaritiesCursor cursor for
-    select ingredientId as id, json_agg(
-      json_build_object(
-        'id', ingredientVarietyId,
-        'price', price,
-        'region', region,
-        'amount', amount
-      )
-    ) as varieties
-    from Owns join IngredientVariety on Owns.ingredientVarietyId = IngredientVariety.id  
-    where bakerId = vBakerId
-    group by ingredientId;
+  cursorMySupplier cursor for
+    select 
+      getSupplierById(supplierId)::jsonb || json_build_object('isHidden', isHidden)::jsonb
+      as supplier
+    from Contracts where Contracts.bakerId = vBakerId;
   
-  vIngredientVarieties record;
-  vIngredient Ingredient;
+  vMySupplier record;
 
 begin
-  open ingredientVaritiesCursor;
+  open cursorMySupplier;
   loop
-    fetch from ingredientVaritiesCursor into vIngredientVarieties;
+    fetch from cursorMySupplier into vMySupplier;
     exit when not found;
-
-    select * into vIngredient
-    from Ingredient where Ingredient.id = vIngredientVarieties.id;
-
-    return next json_build_object(
-      'id', vIngredientVarieties.id,
-      'name', vIngredient.name,
-      'image', vIngredient.image,
-      'shortImage', vIngredient.shortImage,
-      'varieties', vIngredientVarieties.varieties
-    );
+    return next vMySupplier.supplier;
   end loop;
 end;
 $$ LANGUAGE plpgsql;
+
+
+create or replace function getMyIngredients(vBakerId char(6)) returns setof json
+as $$
+declare
+  cursorMyIngredients cursor for 
+    select 
+      getIngredientIdByVarietyId(ingredientVarietyId) as ingredientId, 
+      json_agg(
+        getIngredientVarietyById(ingredientVarietyId)
+      ) as varieties
+    from Owns where bakerId = vBakerId group by ingredientId;
+  
+  vMyIngredient record;
+
+begin
+  open cursorMyIngredients;
+  loop
+    fetch from cursorMyIngredients into vMyIngredient;
+    exit when not found;
+    return next getIngredient(vMyIngredient.ingredientId)::jsonb || json_build_object('varieties', vMyIngredient.varieties)::jsonb;
+  end loop;
+end;
+$$ LANGUAGE plpgsql;
+

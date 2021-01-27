@@ -21,7 +21,7 @@ async function recreateDatabaseTablesWithData() {
 
     console.log('Recreated the database successfully')
   } catch (err) {
-    console.error('Failed to recreate the tables')
+    console.error('Failed to recreate the tables', err)
   }
 }
 
@@ -38,14 +38,14 @@ async function recreateAllFunctions() {
 
     console.log('Deploying all the functions')
 
-    const promises = plSqlFiles.map((file) =>
-      db.any(fs.readFileSync(file, { encoding: 'utf-8' }))
-    )
+    const promises = plSqlFiles.map((file) => {
+      return db.any(fs.readFileSync(file, { encoding: 'utf-8' }))
+    })
 
     await Promise.all(promises)
     console.log('Recreated the functions successfully')
   } catch (err) {
-    console.error('Failed to recreate the tables')
+    console.error('Failed to recreate the function', err)
   }
 }
 
