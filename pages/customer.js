@@ -17,8 +17,8 @@ export default function Customer({ availableIngredients }) {
     selectPizzaSize,
     selectPizzaIngredient,
     unselectPizzaIngredient,
-    getOrderSummary,
     getTotalCost,
+    getPizzaSize,
   } = usePizzaOrderForm()
 
   return (
@@ -40,29 +40,36 @@ export default function Customer({ availableIngredients }) {
           ))}
         </div>
 
-        <h2>2. Choose your favorite ingredients</h2>
+        {!!getPizzaSize() && (
+          <>
+            <h2>2. Choose your favorite ingredients</h2>
 
-        <div className={styles.ingredients}>
-          {availableIngredients.map(
-            ({ varietyId, name, price, region, image }) => (
-              <CustomerIngredient
-                key={varietyId}
-                label={`${name} (${region})`}
-                price={price}
-                image={image}
-                isSelected={isIngredientSelected(varietyId)}
-                select={() => selectPizzaIngredient(varietyId, price)}
-                remove={() => unselectPizzaIngredient(varietyId, price)}
-              />
-            )
-          )}
-          <hr />
-          <h3 className={styles.totalPrice}>Total: {getTotalCost()} €</h3>
-        </div>
+            <div className={styles.ingredients}>
+              {availableIngredients.map(
+                ({ varietyId, name, price, region, image }) => (
+                  <CustomerIngredient
+                    key={varietyId}
+                    label={`${name} (${region})`}
+                    price={price}
+                    image={image}
+                    isSelected={isIngredientSelected(varietyId)}
+                    select={() => selectPizzaIngredient(varietyId, price)}
+                    remove={() => unselectPizzaIngredient(varietyId, price)}
+                  />
+                )
+              )}
+              <hr />
+              <h3 className={styles.totalPrice}>Total: {getTotalCost()} €</h3>
+            </div>
+          </>
+        )}
 
-        <h2>3. Confirm your order?</h2>
-        <p>{getOrderSummary()}</p>
-        <input type="submit" value="Confirm My Order" />
+        {getTotalCost() > 0 && (
+          <>
+            <h2>3. Confirm your order?</h2>
+            <input type="submit" value="Confirm My Order" />
+          </>
+        )}
       </form>
     </section>
   )
