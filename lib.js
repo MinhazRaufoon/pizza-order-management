@@ -141,6 +141,13 @@ export function makeGetRequest(endpoint) {
   return fetch(`http://localhost:3000/${endpoint}`).then((res) => res.json())
 }
 
+export function makePostRequest(endpoint, body) {
+  return fetch(`http://localhost:3000/${endpoint}`, {
+    method: 'post',
+    body: JSON.stringify(body),
+  }).then((res) => res.json())
+}
+
 export async function getAvailableIngredients() {
   return [
     {

@@ -18,12 +18,15 @@ export default function Customer({ availableIngredients }) {
     selectPizzaIngredient,
     unselectPizzaIngredient,
     getTotalCost,
+    submit,
     getPizzaSize,
+    isComplete,
+    addDeliveryAddress,
   } = usePizzaOrderForm()
 
   return (
     <section className={styles.Customer}>
-      <form className={styles.orderForm} onSubmit={(e) => e.preventDefault()}>
+      <div className={styles.orderForm}>
         <h1>Order a pizza</h1>
 
         <h2>1. Choose your pizza size</h2>
@@ -66,11 +69,46 @@ export default function Customer({ availableIngredients }) {
 
         {getTotalCost() > 0 && (
           <>
-            <h2>3. Confirm your order?</h2>
-            <input type="submit" value="Confirm My Order" />
+            <h2>3. Provide your delivery address</h2>
+            <input
+              type="text"
+              name="houseNo"
+              placeholder="House No."
+              onChange={addDeliveryAddress}
+            />
+            <input
+              type="text"
+              name="street"
+              placeholder="Street"
+              onChange={addDeliveryAddress}
+            />
+            <input
+              type="text"
+              name="postcode"
+              placeholder="Post Code"
+              onChange={addDeliveryAddress}
+            />
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              onChange={addDeliveryAddress}
+            />
           </>
         )}
-      </form>
+
+        {isComplete() && (
+          <form
+            onSubmit={(e) => {
+              submit()
+              e.preventDefault()
+            }}
+          >
+            <h2>4. Confirm your order?</h2>
+            <input type="submit" value="Confirm My Order" />
+          </form>
+        )}
+      </div>
     </section>
   )
 }

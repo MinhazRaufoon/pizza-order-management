@@ -25,3 +25,13 @@ begin
   end loop;
 end;
 $$ LANGUAGE plpgsql;
+
+
+create or replace function createPizzaOrder(vCustomerId char(6), vPizzaSize integer, vVarietyIdList char(6) array) 
+returns json
+as $$
+declare
+begin
+  return json_build_object("x", vX);
+end;
+$$ language plpgsql

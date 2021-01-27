@@ -1,4 +1,5 @@
 import { useCallback, useReducer } from 'react'
+import { makePostRequest } from '../lib'
 
 const INITIAL_STATE = {
   size: null,
@@ -38,6 +39,13 @@ function reducePizzaOrder(state, action) {
         totalPrice: state.totalPrice - action.price,
       }
       delete newState.ingredientsMap[action.id]
+      break
+
+    case 'ACTION_APPEND_ADDRESS':
+      newState = {
+        ...state,
+        [action.name]: action.value,
+      }
       break
   }
 
@@ -93,11 +101,46 @@ export default function usePizzaOrderForm() {
   }, [state])
 
   const getTotalCost = useCallback(() => {
-    return state.totalPrice
+    return parseInt(state.totalPrice * 100, 10) / 100
   }, [state])
 
   const getPizzaSize = useCallback(() => {
     return state.size
+  }, [state])
+
+  const isComplete = useCallback(() => {
+    return (
+      !!state.size &&
+      !!state.totalPrice > 0 &&
+      !!state.houseNo &&
+      !!state.postcode &&
+      !!state.city &&
+      !!state.street
+    )
+  }, [state])
+
+  const addDeliveryAddress = useCallback(
+    (e) => {
+      dispatch({
+        type: 'ACTION_APPEND_ADDRESS',
+        name: e.target.name,
+        value: e.target.value,
+      })
+    },
+    [dispatch]
+  )
+
+  const submit = useCallback(async () => {
+    try {
+      const response = await makePostRequest('api/customer/order', {
+        customerId: '156722',
+        baseSize: state.size,
+        ingredientVarietyIds: Object.keys(state.ingredientsMap),
+      })
+      console.log(response)
+    } catch (err) {
+      console.error(err)
+    }
   }, [state])
 
   return {
@@ -108,5 +151,8 @@ export default function usePizzaOrderForm() {
     selectPizzaSize,
     selectPizzaIngredient,
     unselectPizzaIngredient,
+    submit,
+    isComplete,
+    addDeliveryAddress,
   }
 }
