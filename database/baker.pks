@@ -3,9 +3,11 @@ as $$
 declare
   supplierCursor cursor for 
     select id, fullname, mobile, address, image, isHidden 
-    from Supplier join Contracts on Supplier.id = Contracts.supplierId
+    from (
+      Supplier join Contracts on Supplier.id = Contracts.supplierId
+    ) join Produces on Supplier.id = Produces.supplierId
     where bakerId = vBakerId;
-  vSupplier Supplier;
+  vSupplier record;
 begin
   open supplierCursor;
   loop

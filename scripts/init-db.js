@@ -7,24 +7,44 @@ const db = pgp(
   'postgres://amd_project_618537_rw:iewuo8Af@pgsql.hrz.tu-chemnitz.de:5432/amd_project_618537'
 )
 
-db.connect().then(() => {
-  glob('database/**/*.pks', {}, async (err, files) => {
-    await db.any('select DeleteTables();')
-
-    await db.any(fs.readFileSync('database/init.pks', { encoding: 'utf-8' }))
-
-    await db.any(`
+function recreateDatabaseTablesWithData() {
+  db.connect().then(() => {
+    glob('database/**/*.pks', {}, async (err, files) => {
+      console.log('Deleting database tables')
+      await db.any('select DeleteTables();')
+      console.log('Creating database tables')
+      await db.any(fs.readFileSync('database/init.pks', { encoding: 'utf-8' }))
+      await db.any(`
       select CreateTables();
       select PopulateDatabase();
-    `)
-
-    const promises = files.map((file) =>
-      db.any(fs.readFileSync(file, { encoding: 'utf-8' }))
-    )
-
-    await Promise.all(promises)
-
-    console.log('Created the database successfully')
-    exit()
+      `)
+      console.log('Recreated the database successfully')
+      exit()
+    })
   })
-})
+}
+
+function recreateAllFunctions() {
+  db.connect().then(() => {
+    glob('database/**/*.pks', {}, async (err, files) => {
+      console.log('Deploying all the functions')
+      const promises = files.map((file) =>
+        db.any(fs.readFileSync(file, { encoding: 'utf-8' }))
+      )
+      await Promise.all(promises)
+      console.log('Recreated the functions successfully')
+      exit()
+    })
+  })
+}
+
+const command = process.argv[2]
+
+if (!command || command === '--full') {
+  recreateDatabaseTablesWithData()
+  recreateAllFunctions()
+} else if (command === '--func') {
+  recreateAllFunctions()
+} else if (command === '--tables') {
+  recreateDatabaseTablesWithData()
+}

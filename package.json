@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "initdb": "node scripts/init-db.js",
+    "db": "node scripts/init-db.js",
+    "db-functions": "node scripts/init-db.js --func",
+    "db-tables": "node scripts/init-db.js --tables",
     "start": "npm run initdb && npm run dev"
   },
   "dependencies": {
