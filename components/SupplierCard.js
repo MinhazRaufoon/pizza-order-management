@@ -5,9 +5,10 @@ import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
+import { Fragment } from 'react'
 
 export default function SupplierCard(props) {
-  const { id, fullname, mobile, address, image, isHidden } = props
+  const { id, fullname, mobile, products, address, image, isHidden } = props
 
   return (
     <div
@@ -19,16 +20,37 @@ export default function SupplierCard(props) {
       <div className={styles.details}>
         <h1>{fullname}</h1>
         <p>
-          <b>ID:</b> {id}
+          <b>ID</b>&nbsp;&nbsp;{id}
         </p>
         <p>
-          <b>Address:</b> {address}
+          <b>Address</b>&nbsp;&nbsp;{address}
         </p>
         <p>
-          <b>Mobile:</b> {mobile}
+          <b>Mobile</b>&nbsp;&nbsp;{mobile}
         </p>
 
-        {isHidden && <i>&nbsp;(Hidden to me)</i>}
+        {isHidden && <p>&nbsp;(Hidden to me)</p>}
+
+        <p>
+          <b>Produces</b>
+        </p>
+        <div className={styles.products}>
+          {products.map((product) => (
+            <Fragment key={product.id}>
+              {product.varieties.map((variety) => (
+                <div className={styles.variety}>
+                  <Poster
+                    className={styles.productPoster}
+                    imageUrl={product.shortImage}
+                  />
+                  <span>
+                    &nbsp;&nbsp;{product.name} from {variety.region}&nbsp;
+                  </span>
+                </div>
+              ))}
+            </Fragment>
+          ))}
+        </div>
 
         <div className={styles.buttons}>
           <BuyButton />

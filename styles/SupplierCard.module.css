@@ -6,22 +6,54 @@
   background-color: white;
   flex-direction: column;
   min-width: 350px;
+  max-width: 500px;
   overflow: hidden;
   box-shadow: 0 0 10px black;
 }
 
 .poster {
-  grid-column: 1;
   height: 200px;
 }
 
 .details {
-  grid-column: 2;
   padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.details p {
+  margin: 5px;
 }
 
 .details h1 {
   margin-top: 0;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.productPoster {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  background-size: contain !important;
+  background-position: left !important;
+}
+
+.variety {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  font-size: small;
 }
 
 .SupplierCard button {
@@ -36,6 +68,8 @@
 .buttons {
   flex-direction: row;
   display: flex;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .buttons button:hover {
