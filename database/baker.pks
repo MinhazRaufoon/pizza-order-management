@@ -19,12 +19,38 @@ $$ LANGUAGE plpgsql;
 
 create or replace function getIngredients(vBakerId char(6)) returns setof json
 as $$
-declare
-  ingredientCursor cursor for 
-    with OwnIngredientVariety as (
-      select * from Owns join IngredientVariety on Owns.ingredientVarietyId = IngredientVariety.id
-    )
-    select * from Ingredient join OwnIngredientVariety on Ingredient.id = OwnIngredientVariety.ingredientId
-    where bakerId = vBakerId;
+declare  
+  ingredientVaritiesCursor cursor for
+    select ingredientId as id, json_agg(
+      json_build_object(
+        'id', ingredientVarietyId,
+        'price', price,
+        'region', region
+      )
+    ) as varieties
+    from Owns join IngredientVariety on Owns.ingredientVarietyId = IngredientVariety.id  
+    where bakerId = vBakerId
+    group by ingredientId;
   
+  vIngredientVarieties record;
+  vIngredient Ingredient;
+
+begin
+  open ingredientVaritiesCursor;
+  loop
+    fetch from ingredientVaritiesCursor into vIngredientVarieties;
+    exit when not found;
+
+    select * into vIngredient
+    from Ingredient where Ingredient.id = vIngredientVarieties.id;
+
+    return next json_build_object(
+      'id', vIngredientVarieties.id,
+      'name', vIngredient.name,
+      'image', vIngredient.image,
+      'shortImage', vIngredient.shortImage,
+      'varieties', vIngredientVarieties.varieties
+    );
+  end loop;
+end;
 $$ LANGUAGE plpgsql;

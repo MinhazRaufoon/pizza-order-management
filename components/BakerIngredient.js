@@ -7,9 +7,7 @@ import ShowButton from './ShowButton'
 import Poster from './Poster'
 
 export default function BakerIngredient(props) {
-  const { name, image, models, isHidden } = props
-
-  const hasMultipleModels = models.length > 1
+  const { name, image, shortImage, varieties, isHidden } = props
 
   return (
     <div
@@ -22,17 +20,13 @@ export default function BakerIngredient(props) {
         <h1>{name}</h1>
         {isHidden && <i>&nbsp;(Hidden to customers)</i>}
 
-        {/**
-         * 
-         * <div className={styles.models}>
-          {models.map((model, index) => (
-            <div key={model.name || index} className={styles.modelInfo}>
-              {hasMultipleModels && (
-                <Poster className={styles.modelPoster} imageUrl={model.image} />
-              )}
-              <b>{model.name}&nbsp;</b>
-              <label>Amount: {model.amount}</label>
-              <label>Price: {model.price}</label>
+        <div className={styles.models}>
+          {varieties.map(({ region, amount, price }) => (
+            <div key={region} className={styles.modelInfo}>
+              <Poster className={styles.modelPoster} imageUrl={shortImage} />
+              <b>{region}&nbsp;</b>
+              <label>Amount: {amount}</label>
+              <label>Price: {price}</label>
               <br />
               <div className={styles.buttons}>
                 <BuyButton />
@@ -43,7 +37,6 @@ export default function BakerIngredient(props) {
             </div>
           ))}
         </div>
-         */}
       </div>
     </div>
   )
