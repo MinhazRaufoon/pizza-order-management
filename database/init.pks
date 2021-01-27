@@ -1,166 +1,3 @@
-create or replace function CreateCustomerTable() returns void
-as $$
-begin
-  create table Customer (
-    id char(6) primary key,
-    fullname varchar(50),
-    mobile char(11),
-    totalOrders integer not null
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreatePizzaOrderTable() returns void
-as $$
-begin
-  create table PizzaOrder(
-    orderNo char(10) not null primary key,
-    customerId char(6),
-    baseSize integer not null,
-    deliveryHouseNo integer not null,
-    deliveryStreet varchar(15) not null,
-    deliveryPostcode integer not null,
-    deliveryCity varchar(15) not null,
-    datetime timestamp,
-    totalCost numeric(5,2) not null default 0,
-    hasDelivered boolean not null default false,
-
-    constraint verifyBaseSize check (baseSize in (10, 12, 14)),
-    constraint fkCustomerId foreign key (customerId) references Customer(id)
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreateBakerTable() returns void
-as $$
-begin
-  create table Baker(
-    id char(6) primary key,
-    fullname varchar(50),
-    mobile char(11),
-    salary numeric(5,2) not null default 0,
-    totalIngredients integer not null
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreateIngredientTable() returns void
-as $$
-begin
-  create table Ingredient(
-    id char(6) primary key,
-    name varchar(20),
-    image varchar(100),
-    shortImage varchar(100)
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreateIngredientVarietyTable() returns void
-as $$
-begin
-  create table IngredientVariety(
-    id char(6) primary key,
-    ingredientId char(6),
-    region varchar(20),
-    price numeric(5,2) not null default 0,
-    constraint fk_iid foreign key (ingredientId) references Ingredient(id)
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreateSupplierTable() returns void
-as $$
-begin
-  create table Supplier(
-    id char(6) primary key,
-    fullname varchar(50),
-    mobile char(11),
-    address varchar(50),
-    image varchar(100)
-  );
-end;
-$$ LANGUAGE plpgsql;
-
-
-create or replace function CreateContractsTable() returns void
-as $$
-begin
-  create table Contracts(
-    bakerId char(6),
-    supplierId char(6),
-    isHidden boolean not null default false,
-
-    constraint fk_bid foreign key (bakerId) references Baker(id),
-    constraint fk_sid foreign key (supplierId) references Supplier(id)
-  );
-end;
-$$ language plpgsql;
-
-
-create or replace function CreateProducesTable() returns void
-as $$
-begin
-  create table Produces(
-    supplierId char(6),
-    ingredientVarietyId char(6),
-    constraint fk_sid foreign key (supplierId) references Supplier(id),
-    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
-  );
-end;
-$$ language plpgsql;
-
-
-create or replace function CreateOwnsTable() returns void
-as $$
-begin
-  create table Owns(
-    bakerId char(6),
-    ingredientVarietyId char(6),
-    isHidden boolean not null default false,
-    amount integer not null default 0,
-    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id),
-    constraint fk_sid foreign key (bakerId) references Baker(id)
-  );
-end;
-$$ language plpgsql;
-
-
-create or replace function CreateContainsTable() returns void
-as $$
-begin
-  create table Contains(
-    orderNo char(10),
-    ingredientVarietyId char(6),
-    constraint fk_on foreign key (orderNo) references PizzaOrder(orderNo),
-    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
-  );
-end;
-$$ language plpgsql;
-
-
-create or replace function CreateRestocksTable() returns void
-as $$
-begin
-  create table Restocks(
-    bakerId char(6),
-    supplierId char(6),
-    ingredientVarietyId char(6),
-    datetime timestamp,
-    amount integer not null default 0,
-    constraint fk_bid foreign key (bakerId) references Baker(id),
-    constraint fk_sid foreign key (supplierId) references Supplier(id),
-    constraint fk_iid foreign key (ingredientVarietyId) references IngredientVariety(id)
-  );
-end;
-$$ language plpgsql;
-
-
 create or replace function CreateTables() returns void
 as $$
 begin
@@ -226,7 +63,7 @@ begin
   insert into IngredientVariety values ('102003', '100002', 'Turky', 3.2);
 
   insert into Ingredient values ('100003', 'Sausage', 'https://i.imgur.com/WsEascF.jpg', 'https://i.imgur.com/rwn2Mjw.png');
-  insert into IngredientVariety values ('103001', '100003', 'Spain', 4.1);
+  insert into IngredientVariety values ('103001', '100003', 'Germany', 4.1);
   insert into IngredientVariety values ('103002', '100003', 'Italy', 5.1);
   insert into IngredientVariety values ('103003', '100003', 'Turky', 1.2);
 
@@ -275,5 +112,50 @@ begin
   insert into Owns values ('666666', '109002', 'false', 7);
   insert into Owns values ('666666', '109003', 'false', 8);
   insert into Owns values ('666666', '110003', 'false', 4);
+
+  insert into Produces values ('666321', '109002');
+  insert into Produces values ('666321', '101003');
+  insert into Produces values ('666321', '102001');
+  insert into Produces values ('666321', '102003');
+  insert into Produces values ('666321', '103003');
+  insert into Produces values ('666321', '104001');
+  insert into Produces values ('666321', '106001');
+  insert into Produces values ('666321', '107001');
+  insert into Produces values ('666321', '108002');
+  insert into Produces values ('666321', '108003');
+
+  insert into Produces values ('661321', '108001');
+  insert into Produces values ('661321', '101003');
+  insert into Produces values ('661321', '102002');
+  insert into Produces values ('661321', '102003');
+  insert into Produces values ('661321', '103003');
+  insert into Produces values ('661321', '109001');
+  insert into Produces values ('661321', '105001');
+  
+  insert into Produces values ('532422', '103001');
+  insert into Produces values ('532422', '101003');
+  insert into Produces values ('532422', '102002');
+  insert into Produces values ('532422', '103002');
+  insert into Produces values ('532422', '109003');
+  insert into Produces values ('532422', '103003');
+  insert into Produces values ('532422', '105001');
+  
+  insert into Produces values ('764534', '101002');
+  insert into Produces values ('764534', '102001');
+  insert into Produces values ('764534', '102002');
+  insert into Produces values ('764534', '103002');
+  insert into Produces values ('764534', '104001');
+  insert into Produces values ('764534', '110003');
+  insert into Produces values ('764534', '105001');
+  
+  insert into Produces values ('524524', '101001');
+  insert into Produces values ('524524', '102001');
+  insert into Produces values ('524524', '102003');
+  insert into Produces values ('524524', '103002');
+  insert into Produces values ('524524', '104001');
+  insert into Produces values ('524524', '106001');
+  insert into Produces values ('524524', '107001');
+  insert into Produces values ('524524', '108002');
+  insert into Produces values ('524524', '108003');
 end;
 $$ LANGUAGE plpgsql;
