@@ -20,10 +20,9 @@ export default async (req, res) => {
       'ARRAY[' + ingredientVarietyIds.map((id) => `'${id}'`).join(',') + ']'
 
     const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${postcode}', '${city}', '${street}')`
+    console.log(queryString)
 
     const response = await db.one(queryString)
-
-    console.log(queryString)
 
     res.statusCode = 200
     res.json(response)

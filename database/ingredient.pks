@@ -95,3 +95,15 @@ begin
   return vAmount;
 end;
 $$ language plpgsql;
+
+
+create or replace function getPriceOfIngredientVariety(vVarietyId char(6)) returns numeric(5,2)
+as $$
+declare
+  vPrice numeric(5,2);
+begin
+  select price into vPrice
+  from IngredientVariety where id = vVarietyId;
+  return vPrice;
+end;
+$$ language plpgsql;
