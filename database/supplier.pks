@@ -16,6 +16,7 @@ end;
 $$ LANGUAGE plpgsql;
 
 
+/* To get all the ingredients with varieties that a supplier produces */
 create or replace function getSupplierProducts(vSupplierId char(6)) returns setof json
 as $$
 declare
