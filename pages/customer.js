@@ -22,11 +22,23 @@ export default function Customer({ availableIngredients }) {
     getPizzaSize,
     isComplete,
     addDeliveryAddress,
+    isOrderSuccessFul,
+    hasError,
+    message,
   } = usePizzaOrderForm()
 
   return (
     <section className={styles.Customer}>
       <div className={styles.orderForm}>
+        {(hasError || isOrderSuccessFul) && (
+          <div
+            className={styles.responseCard}
+            style={{ backgroundColor: hasError ? 'red' : 'green' }}
+          >
+            <p>{isOrderSuccessFul && 'Your order is successful!'}</p>
+            <p>{hasError && message}</p>
+          </div>
+        )}
         <h1>Order a pizza</h1>
 
         <h2>1. Choose your pizza size</h2>

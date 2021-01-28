@@ -65,5 +65,10 @@
   color: red;
 }
 
+.responseCard {
+  color: white;
+  padding: 1rem;
+}
+
 .ingredients {
 }

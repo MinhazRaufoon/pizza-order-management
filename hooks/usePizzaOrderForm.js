@@ -5,6 +5,9 @@ const INITIAL_STATE = {
   size: null,
   ingredientsMap: {},
   totalPrice: 0,
+  isOrderSuccessFul: false,
+  hasError: false,
+  message: undefined,
 }
 
 function reducePizzaOrder(state, action) {
@@ -45,6 +48,25 @@ function reducePizzaOrder(state, action) {
       newState = {
         ...state,
         [action.name]: action.value,
+      }
+      break
+
+    case 'ACTION_ORDER_COMPLETE':
+      newState = {
+        ...state,
+        ...INITIAL_STATE,
+        isOrderSuccessFul: true,
+        hasError: false,
+      }
+      break
+
+    case 'ACTION_ORDER_FAILED':
+      newState = {
+        ...state,
+        ...INITIAL_STATE,
+        isOrderSuccessFul: false,
+        hasError: true,
+        message: action.reason,
       }
       break
   }
@@ -142,13 +164,18 @@ export default function usePizzaOrderForm() {
         city,
         street,
       })
-      console.log(response)
-    } catch (err) {
-      console.error(err)
-    }
-  }, [state])
+      if (response.success) {
+        dispatch({ type: 'ACTION_ORDER_COMPLETE' })
+      } else {
+        dispatch({ type: 'ACTION_ORDER_FAILED', reason: response.reason })
+      }
+    } catch (err) {}
+  }, [dispatch, state])
 
   return {
+    isOrderSuccessFul: state.isOrderSuccessFul,
+    hasError: state.hasError,
+    message: state.message,
     getPizzaSize,
     getTotalCost,
     getCurrentPizzaSize,
