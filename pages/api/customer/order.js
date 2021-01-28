@@ -21,7 +21,9 @@ export default async (req, res) => {
 
     const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${postcode}', '${city}', '${street}')`
 
-    const response = await db.one(queryString.createPizzaOrder)
+    const response = await db.one(queryString)
+
+    console.log(queryString)
 
     res.statusCode = 200
     res.json(response)
