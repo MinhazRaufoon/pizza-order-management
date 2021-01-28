@@ -25,7 +25,7 @@ export default async (req, res) => {
     const response = await db.one(queryString)
 
     res.statusCode = 200
-    res.json(response)
+    res.json(response.createpizzaorder)
   } catch (err) {
     console.error(err)
     res.statusCode = 404

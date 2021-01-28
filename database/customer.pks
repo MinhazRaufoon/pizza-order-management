@@ -79,6 +79,7 @@ exception
   when sqlstate 'P0002' then
     -- Delete the order
     delete from PizzaOrder where orderNo = vOrderNo;
+    delete from Contains where orderNo = vOrderNo;
     return json_build_object('error', true, 'reason', 'Some ingredients are out of stock');
 end;
 $$ language plpgsql
