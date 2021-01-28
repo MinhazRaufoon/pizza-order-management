@@ -65,6 +65,6 @@ begin
   return json_build_object('success', true);
 exception
   when sqlstate 'P0002' then
-    return json_build_object('error', true);
+    return json_build_object('error', true, 'reason', 'Some ingredients are out of stock');
 end;
 $$ language plpgsql
