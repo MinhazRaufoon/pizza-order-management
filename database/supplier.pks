@@ -40,3 +40,31 @@ begin
 end;
 $$ LANGUAGE plpgsql;
 
+
+create or replace function hideOrShowSupplier(vBakerId char(6), vSupplierId char(6)) returns json
+as $$
+declare
+  vIsHidden boolean;
+  vNextState boolean;
+begin
+  select isHidden into vIsHidden 
+    from Contracts
+    where supplierId = vSupplierId and bakerId = vBakerId;
+  
+  if vIsHidden = true then
+    vNextState = false;
+  else
+    vNextState = true;
+  end if;
+
+  update Contracts 
+    set isHidden=vNextState
+    where supplierId = vSupplierId and bakerId = vBakerId;
+  
+  return json_build_object(
+    'success', true,
+    'supplierId', vSupplierId,
+    'state', vNextState
+  );
+end;
+$$ LANGUAGE plpgsql;

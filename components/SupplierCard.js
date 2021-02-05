@@ -1,14 +1,20 @@
 import styles from '../styles/SupplierCard.module.css'
-import BuyButton from './BuyButton'
+import Router from 'next/router'
 import CrossButton from './CrossButton'
 import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
-import { Fragment } from 'react'
+import { Fragment, useCallback } from 'react'
+import { toggleSupplierVisibility } from '../lib'
 
 export default function SupplierCard(props) {
   const { id, name, mobile, products, address, image, isHidden } = props
+
+  const hideOrShow = useCallback(async () => {
+    await toggleSupplierVisibility('666666', id)
+    window.location.reload()
+  }, [id])
 
   return (
     <div
@@ -27,7 +33,7 @@ export default function SupplierCard(props) {
           &nbsp;&nbsp;({mobile})
         </p>
 
-        {isHidden && <p>&nbsp;(Hidden to me)</p>}
+        {isHidden && <p style={{ color: 'red' }}>&nbsp;(Hidden to me)</p>}
 
         <p>
           <b>Produces:</b>
@@ -51,8 +57,11 @@ export default function SupplierCard(props) {
         </div>
 
         <div className={styles.buttons}>
-          <BuyButton />
-          {isHidden ? <ShowButton /> : <HideButton />}
+          {isHidden ? (
+            <ShowButton onClick={hideOrShow} />
+          ) : (
+            <HideButton onClick={hideOrShow} />
+          )}
           <EditButton />
           <CrossButton />
         </div>

@@ -11,8 +11,6 @@ end;
 $$ language plpgsql;
 
 
-drop trigger if exists increment_customer_total_orders on PizzaOrder;
-
 create trigger increment_customer_total_orders
   after insert on PizzaOrder for each row
   execute procedure incrementCustomerTotalOrders();
@@ -31,8 +29,6 @@ end;
 $$ language plpgsql;
 
 
-drop trigger if exists reduce_customer_total_orders on PizzaOrder;
-
 create trigger reduce_customer_total_orders
   before delete on PizzaOrder for each row
   execute procedure reduceCustomerTotalOrders();
@@ -49,9 +45,6 @@ begin
   return NEW;
 end;
 $$ language plpgsql;
-
-
-drop trigger if exists calculate_total_cost on PizzaOrder;
 
 create trigger calculate_total_cost
   after insert on Contains for each row

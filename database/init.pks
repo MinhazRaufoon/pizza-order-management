@@ -34,6 +34,16 @@ end;
 $$ LANGUAGE plpgsql;
 
 
+create or replace function DeleteTriggers() returns void
+as $$
+begin
+  drop trigger if exists increment_customer_total_orders on PizzaOrder;
+  drop trigger if exists reduce_customer_total_orders on PizzaOrder;
+  drop trigger if exists calculate_total_cost on PizzaOrder;
+end;
+$$ LANGUAGE plpgsql;
+
+
 create or replace function PopulateDatabase() returns void
 as $$
 begin

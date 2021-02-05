@@ -38,6 +38,8 @@ async function recreateAllFunctions() {
 
     console.log('Deploying all the functions')
 
+    await db.any('select DeleteTriggers();')
+
     const promises = plSqlFiles.map((file) => {
       return db.any(fs.readFileSync(file, { encoding: 'utf-8' }))
     })
