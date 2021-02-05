@@ -6,7 +6,13 @@ import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
 import { Fragment, useCallback } from 'react'
-import { toggleSupplierVisibility } from '../lib'
+
+export function toggleSupplierVisibility(bakerId, supplierId) {
+  return makePostRequest('api/baker/suppliers/hide-or-show', {
+    bakerId,
+    supplierId,
+  })
+}
 
 export default function SupplierCard(props) {
   const { id, name, mobile, products, address, image, isHidden } = props
@@ -16,7 +22,7 @@ export default function SupplierCard(props) {
     if (window.confirm(`${name} is made ${isHidden ? 'visible' : 'hidden'}`)) {
       window.location.reload()
     }
-  }, [id, name])
+  }, [id, name, isHidden])
 
   return (
     <div

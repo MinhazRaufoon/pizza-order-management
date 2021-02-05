@@ -54,10 +54,3 @@ export function makePostRequest(endpoint, body) {
     body: JSON.stringify(body),
   }).then((res) => res.json())
 }
-
-export function toggleSupplierVisibility(bakerId, supplierId) {
-  return makePostRequest('api/baker/suppliers/hide-or-show', {
-    bakerId,
-    supplierId,
-  })
-}

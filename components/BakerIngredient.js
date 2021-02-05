@@ -5,32 +5,65 @@ import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
+import { useCallback } from 'react'
+import { makePostRequest } from '../lib'
+
+export function toggleIngredientVisibility(bakerId, ingredientVarietyId) {
+  return makePostRequest('api/baker/ingredients/hide-or-show', {
+    bakerId,
+    ingredientVarietyId,
+  })
+}
 
 export default function BakerIngredient(props) {
-  const { name, image, shortImage, varieties, isHidden } = props
+  const { name, image, shortImage, varieties } = props
+
+  const hideOrShow = useCallback(
+    async (varietyId, region, isHidden) => {
+      await toggleIngredientVisibility('666666', varietyId)
+      if (
+        window.confirm(
+          `${name} from ${region} is made ${isHidden ? 'visible' : 'hidden'}`
+        )
+      ) {
+        window.location.reload()
+      }
+    },
+    [name]
+  )
 
   return (
-    <div
-      className={styles.BakerIngredient}
-      style={{ backgroundColor: isHidden ? 'lightgray' : '#fafafa' }}
-    >
+    <div className={styles.BakerIngredient}>
       <Poster className={styles.poster} imageUrl={image} />
 
       <div className={styles.details}>
         <h1>{name}</h1>
-        {isHidden && <i>&nbsp;(Hidden to customers)</i>}
 
         <div className={styles.models}>
-          {varieties.map(({ region, amount, price }) => (
+          {varieties.map(({ id, region, amount, price, isHidden }) => (
             <div key={region} className={styles.modelInfo}>
               <Poster className={styles.modelPoster} imageUrl={shortImage} />
+
               <b>From {region}&nbsp;</b>
+
+              {isHidden && <i style={{ color: 'red' }}>&nbsp;(Hidden)</i>}
               <label>Amount: {amount}</label>
               <label>Price: {price}</label>
               <br />
+
               <div className={styles.buttons}>
                 <BuyButton />
-                {isHidden ? <ShowButton /> : <HideButton />}
+
+                {isHidden ? (
+                  <ShowButton
+                    onClick={() => hideOrShow(id, region, isHidden)}
+                  />
+                ) : (
+                  <HideButton
+                    onClick={() => hideOrShow(id, region, isHidden)}
+                  />
+                )}
+
                 <EditButton />
                 <CrossButton />
               </div>

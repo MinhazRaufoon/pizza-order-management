@@ -30,7 +30,9 @@ declare
     select 
       getIngredientIdByVarietyId(ingredientVarietyId) as ingredientId, 
       json_agg(
-        getIngredientVarietyById(ingredientVarietyId)
+        getIngredientVarietyById(ingredientVarietyId)::jsonb 
+        || json_build_object('amount', amount)::jsonb
+        || json_build_object('isHidden', isHidden)::jsonb
       ) as varieties
     from Owns where bakerId = vBakerId group by ingredientId;
   

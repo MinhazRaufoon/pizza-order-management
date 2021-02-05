@@ -124,7 +124,7 @@ begin
   end if;
 
   update Owns 
-    set isHidden=vNextState where supplierId = vSupplierId and bakerId = vBakerId;
+    set isHidden=vNextState where ingredientVarietyId = vVarietyId and bakerId = vBakerId;
   
   return json_build_object(
     'success', true,
