@@ -19,7 +19,10 @@ export default function SupplierCard(props) {
   return (
     <div
       className={styles.SupplierCard}
-      style={{ backgroundColor: isHidden ? 'lightgray' : '#fafafa' }}
+      style={{
+        backgroundColor: isHidden ? 'lightgray' : '#fafafa',
+        color: isHidden ? 'gray' : 'inherit',
+      }}
     >
       <Poster className={styles.poster} imageUrl={image} />
 
