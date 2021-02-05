@@ -6,7 +6,7 @@ export default function RecentOrders({ orders }) {
   return (
     <section className={styles.RecentOrders}>
       <div className={styles.filters}>
-        <h1>Add filters here for query demonstration</h1>
+        <h1>Order History of All Time</h1>
       </div>
       <div className={styles.table}>
         <b>Order No.</b>

@@ -15,9 +15,9 @@ export default function Suppliers({ suppliers }) {
     <section className={styles.Suppliers}>
       <div className={styles.filters}>
         <h1>Here are my ingredient suppliers</h1>
-        <h3>
+        <p>
           Total ({suppliers.length}), Hidden ({hiddenCount})
-        </h3>
+        </p>
       </div>
 
       <div className={styles.supplierList}>

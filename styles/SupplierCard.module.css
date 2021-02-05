@@ -7,7 +7,7 @@
   flex-direction: row;
   width: 60vw;
   overflow: hidden;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px gray;
 }
 
 .poster {

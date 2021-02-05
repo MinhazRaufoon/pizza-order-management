@@ -13,7 +13,7 @@
   margin: 2rem;
   cursor: pointer;
   border-radius: 5px;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px gray;
   animation-name: blink;
   animation-fill-mode: forwards;
   animation-duration: 1s;
