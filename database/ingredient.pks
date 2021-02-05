@@ -107,3 +107,29 @@ begin
   return vPrice;
 end;
 $$ language plpgsql;
+
+create or replace function hideOrShowIngredient(vBakerId char(6), vVarietyId char(6)) returns json
+as $$
+declare
+  vIsHidden boolean;
+  vNextState boolean;
+begin
+  select isHidden into vIsHidden 
+    from Owns where ingredientVarietyId = vVarietyId and bakerId = vBakerId;
+
+  if vIsHidden = true then
+    vNextState = false;
+  else
+    vNextState = true;
+  end if;
+
+  update Owns 
+    set isHidden=vNextState where supplierId = vSupplierId and bakerId = vBakerId;
+  
+  return json_build_object(
+    'success', true,
+    'ingredientVarietyId', vVarietyId,
+    'state', vNextState
+  );
+end;
+$$ language plpgsql;
