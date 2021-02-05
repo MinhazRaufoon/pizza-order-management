@@ -3,6 +3,7 @@ import {
   getRecentOrderSummary,
   getIngredientsSummary,
   getSuppliersSummary,
+  makeGetRequest,
 } from '../../lib'
 import styles from '../../styles/Baker.module.css'
 
@@ -42,13 +43,38 @@ export default function Baker(props) {
 }
 
 export async function getServerSideProps(context) {
+  const {
+    totalOrders,
+    totalIngredientVarieties,
+    totalIngredients,
+    totalSuppliers,
+  } = await makeGetRequest('api/baker')
   return {
     props: {
-      recentOrderSummary: await getRecentOrderSummary(),
+      recentOrderSummary: [
+        {
+          value: totalOrders,
+          type: 'Total orders',
+        },
+      ],
 
-      ingredientsSummary: await getIngredientsSummary(),
+      ingredientsSummary: [
+        {
+          type: 'Total ingredients',
+          value: totalIngredients,
+        },
+        {
+          type: 'Total varieties',
+          value: totalIngredientVarieties,
+        },
+      ],
 
-      suppliersSummary: await getSuppliersSummary(),
+      suppliersSummary: [
+        {
+          type: 'Total suppliers',
+          value: totalSuppliers,
+        },
+      ],
     },
   }
 }

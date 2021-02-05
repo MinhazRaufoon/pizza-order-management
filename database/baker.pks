@@ -113,3 +113,43 @@ begin
   end loop;
 end;
 $$ language plpgsql;
+
+
+create or replace function getSummaryOfEverything(vBakerId char(6)) returns json
+as $$
+declare
+  vTotalOrders integer;
+  vTotalIngredientVarieties integer;
+  vTotalIngredients integer;
+  vTotalSuppliers integer;
+
+begin
+  select count(orderNo) 
+    into vTotalOrders from PizzaOrder;
+
+  select count(ingredientVarietyId) 
+    into vTotalIngredientVarieties from Owns where bakerId = vBakerId;
+
+  with IngredientNames as (
+    select name
+        from 
+        (
+          IngredientVariety join Owns 
+          on Owns.ingredientVarietyId = IngredientVariety.id
+        ) 
+        join Ingredient on IngredientVariety.ingredientId = Ingredient.id
+      where bakerId = vBakerId
+      group by name
+  ) select count(name) into vTotalIngredients from IngredientNames;
+  
+  select count(supplierId) 
+    into vTotalSuppliers from Contracts where bakerId = vBakerId;
+  
+  return json_build_object(
+    'totalOrders', vTotalOrders,
+    'totalIngredientVarieties', vTotalIngredientVarieties,
+    'totalIngredients', vTotalIngredients,
+    'totalSuppliers', vTotalSuppliers
+  );
+end;
+$$ language plpgsql;

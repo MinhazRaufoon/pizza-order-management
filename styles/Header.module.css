@@ -17,3 +17,7 @@
   margin-bottom: 0;
   cursor: pointer;
 }
+
+.Header h2:hover {
+  color: yellow;
+}
