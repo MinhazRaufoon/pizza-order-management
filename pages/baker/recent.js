@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { getRecentOrders } from '../../lib'
+import { makeGetRequest } from '../../lib'
 import styles from '../../styles/RecentOrders.module.css'
 
 export default function RecentOrders({ orders }) {
@@ -9,25 +9,30 @@ export default function RecentOrders({ orders }) {
         <h1>Add filters here for query demonstration</h1>
       </div>
       <div className={styles.table}>
-        <b>SL</b>
         <b>Order No.</b>
-        <b>Ingredients</b>
-        <b>Size</b>
+        <b>Date</b>
+        <b>Description</b>
         <b>Address</b>
         <b>Phone</b>
         <b>Status</b>
 
-        {orders.map((order, index) => {
-          const { id, ingredients, size, address, phone, status } = order
+        {orders.map((order) => {
+          const {
+            orderNo,
+            pizzaDescription,
+            deliveryAddress,
+            mobile,
+            hasDelivered,
+            datetime,
+          } = order
           return (
-            <Fragment key={id}>
-              <span>{index}</span>
-              <span>{id}</span>
-              <span>{ingredients}</span>
-              <span>{size}</span>
-              <span>{address}</span>
-              <span>{phone}</span>
-              <span>{status ? 'Delivered' : 'Not delivered'}</span>
+            <Fragment key={orderNo}>
+              <span>{orderNo}</span>
+              <span>{new Date(datetime).toLocaleString()}</span>
+              <span>{pizzaDescription}</span>
+              <span>{deliveryAddress}</span>
+              <span>{mobile}</span>
+              <span>{hasDelivered ? 'Delivered' : 'Not delivered'}</span>
             </Fragment>
           )
         })}
@@ -39,7 +44,7 @@ export default function RecentOrders({ orders }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      orders: await getRecentOrders(),
+      orders: await makeGetRequest('api/baker/recent-orders'),
     },
   }
 }

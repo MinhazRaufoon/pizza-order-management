@@ -42,35 +42,6 @@ export async function getSuppliersSummary() {
   ]
 }
 
-export async function getRecentOrders() {
-  return [
-    {
-      id: '231312312',
-      ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-      size: 'M',
-      address: '69 Puppestraße, 09126 Chemnitz',
-      phone: '01712880022',
-      status: false,
-    },
-    {
-      id: '4123123123',
-      ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-      size: 'M',
-      address: '69 Puppestraße, 09126 Chemnitz',
-      phone: '01712880022',
-      status: false,
-    },
-    {
-      id: '2232323',
-      ingredients: 'Alu 2kg, potol 3kg, cheese 5kg',
-      size: 'M',
-      address: '69 Puppestraße, 09126 Chemnitz',
-      phone: '01712880022',
-      status: false,
-    },
-  ]
-}
-
 const SERVER = 'http://localhost:3000'
 
 export function makeGetRequest(endpoint) {

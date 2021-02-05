@@ -19,7 +19,7 @@ export default async (req, res) => {
     const varietyIdAsPostgresList =
       'ARRAY[' + ingredientVarietyIds.map((id) => `'${id}'`).join(',') + ']'
 
-    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${postcode}', '${city}', '${street}')`
+    const queryString = `select createPizzaOrder('${customerId}', '${baseSize}', ${varietyIdAsPostgresList}, '${houseNo}', '${street}', '${postcode}', '${city}')`
     console.log(queryString)
 
     const response = await db.one(queryString)
