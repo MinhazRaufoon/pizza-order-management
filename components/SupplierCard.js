@@ -8,7 +8,7 @@ import Poster from './Poster'
 import { Fragment } from 'react'
 
 export default function SupplierCard(props) {
-  const { id, fullname, mobile, products, address, image, isHidden } = props
+  const { id, name, mobile, products, address, image, isHidden } = props
 
   return (
     <div
@@ -18,21 +18,19 @@ export default function SupplierCard(props) {
       <Poster className={styles.poster} imageUrl={image} />
 
       <div className={styles.details}>
-        <h1>{fullname}</h1>
+        <h1>
+          {id} - {name}
+        </h1>
         <p>
-          <b>ID</b>&nbsp;&nbsp;{id}
-        </p>
-        <p>
-          <b>Address</b>&nbsp;&nbsp;{address}
-        </p>
-        <p>
-          <b>Mobile</b>&nbsp;&nbsp;{mobile}
+          <b>Contact:</b>
+          &nbsp;&nbsp;{address}
+          &nbsp;&nbsp;({mobile})
         </p>
 
         {isHidden && <p>&nbsp;(Hidden to me)</p>}
 
         <p>
-          <b>Produces</b>
+          <b>Produces:</b>
         </p>
         <div className={styles.products}>
           {products.map((product) => (

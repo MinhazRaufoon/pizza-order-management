@@ -12,7 +12,7 @@
 }
 
 .poster {
-  height: 200px;
+  height: 250px;
 }
 
 .details {
@@ -35,6 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  margin-bottom: 1rem;
 }
 
 .productPoster {
@@ -52,7 +53,6 @@
   justify-content: center;
   text-align: center;
   margin: 5px;
-  padding: 5px;
   font-size: small;
 }
 
