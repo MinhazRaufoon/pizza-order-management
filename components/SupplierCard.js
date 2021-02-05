@@ -13,8 +13,10 @@ export default function SupplierCard(props) {
 
   const hideOrShow = useCallback(async () => {
     await toggleSupplierVisibility('666666', id)
-    window.location.reload()
-  }, [id])
+    if (window.confirm(`${name} is made ${isHidden ? 'visible' : 'hidden'}`)) {
+      window.location.reload()
+    }
+  }, [id, name])
 
   return (
     <div

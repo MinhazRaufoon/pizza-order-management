@@ -4,15 +4,14 @@
   border-radius: 2px;
   margin: 1rem;
   background-color: white;
-  flex-direction: column;
-  min-width: 350px;
-  max-width: 500px;
+  flex-direction: row;
+  width: 60vw;
   overflow: hidden;
   box-shadow: 0 0 10px black;
 }
 
 .poster {
-  height: 250px;
+  width: 250px;
 }
 
 .details {
@@ -83,7 +82,7 @@
 }
 
 .buttons button:nth-child(2) {
-  background-color: white;
+  fill: black;
 }
 
 .buttons button:nth-child(3) {
