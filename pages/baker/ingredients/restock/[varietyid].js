@@ -1,10 +1,30 @@
-import { useState } from 'react'
-import { makeGetRequest } from '../../../../lib'
+import { useCallback, useState } from 'react'
+import { makeGetRequest, makePostRequest } from '../../../../lib'
 import styles from '../../../../styles/Restock.module.css'
+import { useRouter } from 'next/router'
 
 export default function Restock({ variety, suppliers }) {
   const [supplierId, setSupplierId] = useState(suppliers[0].id)
   const [amount, setRestockAmount] = useState(1)
+
+  const { back } = useRouter()
+
+  const restock = useCallback(async () => {
+    const { success, message } = await makePostRequest(
+      'api/baker/ingredients/restock',
+      {
+        supplierId,
+        amount,
+      }
+    )
+    if (success) {
+      window.confirm('Restocking successful!')
+      back()
+      back()
+    } else {
+      window.alert(`Restock request denied! Reason: ${message}`)
+    }
+  }, [supplierId, amount])
 
   return (
     <section className={styles.Restock}>
@@ -21,9 +41,13 @@ export default function Restock({ variety, suppliers }) {
 
         <div className={styles.field}>
           <label>Select a supplier:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select>
+
+          <select
+            onChange={(e) => setSupplierId(e.target.value)}
+            value={supplierId}
+          >
             {suppliers.map(({ id, name }) => (
-              <option key={id} value={id} value={supplierId}>
+              <option key={id} value={id}>
                 {name}
               </option>
             ))}
@@ -32,7 +56,11 @@ export default function Restock({ variety, suppliers }) {
 
         <div className={styles.field}>
           <label>Select amount:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <select value={amount}>
+
+          <select
+            value={amount}
+            onChange={(e) => setRestockAmount(e.target.value)}
+          >
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -41,7 +69,9 @@ export default function Restock({ variety, suppliers }) {
           </select>
         </div>
 
-        <button className={styles.restockButton}>Restock</button>
+        <button className={styles.restockButton} onClick={restock}>
+          Restock
+        </button>
       </div>
     </section>
   )
