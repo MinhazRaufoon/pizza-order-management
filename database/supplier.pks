@@ -73,7 +73,7 @@ $$ LANGUAGE plpgsql;
 create or replace function canProduce(vSupplierId char(6), vVarietyId char(6)) returns boolean
 as $$
 declare
-  vCount boolean;
+  vCount integer;
 begin
   select count(*) into vCount 
     from Produces where ingredientVarietyId = vVarietyId and supplierId = vSupplierId;

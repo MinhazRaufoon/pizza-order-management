@@ -15,6 +15,7 @@ export default function Restock({ variety, suppliers }) {
       {
         supplierId,
         amount,
+        varietyId: variety.id,
       }
     )
     if (success) {
