@@ -7,10 +7,10 @@ export default async (req, res) => {
   }
 
   try {
-    const { supplierId, amount, varietyId } = JSON.parse(req.body)
+    const { supplierId, amount, varietyId, bakerId } = JSON.parse(req.body)
 
     const response = await db.one(
-      `select restock('666666', '${supplierId}', '${varietyId}', ${amount})`
+      `select restock('${bakerId}', '${supplierId}', '${varietyId}', ${amount})`
     )
 
     res.statusCode = 200

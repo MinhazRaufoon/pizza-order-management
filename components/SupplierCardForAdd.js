@@ -4,7 +4,24 @@ import { Fragment, useCallback } from 'react'
 import { makePostRequest } from '../lib'
 
 export default function SupplierCardForAdd(props) {
-  const { id, name, mobile, products, address, image } = props
+  const { id, name, products, image } = props
+
+  const addSupplier = useCallback(async () => {
+    const { success, message } = await makePostRequest(
+      'api/baker/suppliers/add',
+      {
+        bakerId: '666666',
+        supplierId: id,
+      }
+    )
+    if (success) {
+      window.confirm('Successfully added')
+    } else {
+      window.confirm('Failed!!! Reason: ' + message)
+    }
+
+    window.location.reload()
+  }, [id])
 
   return (
     <div className={styles.SupplierCard}>
@@ -36,6 +53,7 @@ export default function SupplierCardForAdd(props) {
         </div>
 
         <button
+          onClick={addSupplier}
           style={{
             backgroundColor: 'crimson',
             color: 'white',

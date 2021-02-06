@@ -34,7 +34,7 @@ export default function Suppliers({ suppliers }) {
 }
 
 export async function getServerSideProps(context) {
-  const suppliers = await makeGetRequest('api/baker/suppliers')
+  const suppliers = await makeGetRequest('api/baker/suppliers?bakerid=666666')
 
   const productsList = await Promise.all(
     suppliers.map((supplier) => {

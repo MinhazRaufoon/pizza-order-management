@@ -1,4 +1,3 @@
-import SupplierCard from '../../../components/SupplierCard'
 import SupplierCardForAdd from '../../../components/SupplierCardForAdd'
 import { makeGetRequest } from '../../../lib'
 import styles from '../../../styles/SupplierAdditionForm.module.css'
@@ -20,7 +19,9 @@ export default function SupplierAdditionForm({ suppliers }) {
 }
 
 export async function getServerSideProps(context) {
-  const suppliers = await makeGetRequest('api/baker/suppliers/add')
+  const suppliers = await makeGetRequest(
+    'api/baker/suppliers/uncontracted?bakerid=666666'
+  )
 
   const productsList = await Promise.all(
     suppliers.map((supplier) => {

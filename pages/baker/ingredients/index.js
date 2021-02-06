@@ -19,7 +19,7 @@ export default function Ingredients({ ingredients }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      ingredients: await makeGetRequest('api/baker/ingredients'),
+      ingredients: await makeGetRequest('api/baker/ingredients?bakerid=666666'),
     },
   }
 }

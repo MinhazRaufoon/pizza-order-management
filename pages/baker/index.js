@@ -48,7 +48,8 @@ export async function getServerSideProps(context) {
     totalIngredientVarieties,
     totalIngredients,
     totalSuppliers,
-  } = await makeGetRequest('api/baker')
+  } = await makeGetRequest('api/baker?bakerid=666666')
+
   return {
     props: {
       recentOrderSummary: [

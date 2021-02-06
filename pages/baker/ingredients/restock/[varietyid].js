@@ -16,6 +16,7 @@ export default function Restock({ variety, suppliers }) {
         supplierId,
         amount,
         varietyId: variety.id,
+        bakerId: '666666',
       }
     )
     if (success) {
@@ -86,7 +87,7 @@ export async function getServerSideProps(context) {
   )
 
   const suppliers = await makeGetRequest(
-    `api/baker/ingredients/suppliers-of?varietyid=${varietyid}`
+    `api/baker/ingredients/suppliers-of?varietyid=${varietyid}&bakerid=666666`
   )
 
   return {

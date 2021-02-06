@@ -44,7 +44,7 @@ export default function RecentOrders({ orders }) {
 export async function getServerSideProps(context) {
   return {
     props: {
-      orders: await makeGetRequest('api/baker/recent-orders'),
+      orders: await makeGetRequest('api/baker/recent-orders?bakerid=666666'),
     },
   }
 }

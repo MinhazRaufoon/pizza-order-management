@@ -2,7 +2,7 @@ import db from '../../../../database'
 
 export default async (req, res) => {
   try {
-    const data = await db.any(`select getMySuppliers('666666')`)
+    const data = await db.any(`select getMySuppliers('${req.query.bakerid}')`)
     res.statusCode = 200
     res.json(Object.values(data).map((item) => item.getmysuppliers))
   } catch (err) {
