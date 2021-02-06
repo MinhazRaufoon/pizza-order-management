@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import SupplierCard from '../../components/SupplierCard'
-import { makeGetRequest } from '../../lib'
-import styles from '../../styles/Suppliers.module.css'
+import SupplierCard from '../../../components/SupplierCard'
+import { makeGetRequest } from '../../../lib'
+import styles from '../../../styles/Suppliers.module.css'
 
 export default function Suppliers({ suppliers }) {
   const hiddenCount = useMemo(() => {
@@ -18,6 +18,7 @@ export default function Suppliers({ suppliers }) {
         <p>
           Total ({suppliers.length}), Hidden ({hiddenCount})
         </p>
+        <button className={styles.supplierAddButton}>Add Supplier</button>
       </div>
 
       <div className={styles.supplierList}>

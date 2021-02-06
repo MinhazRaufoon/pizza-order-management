@@ -60,8 +60,8 @@ begin
   insert into Contracts values ('666666', '666321');
   insert into Contracts values ('666666', '661321');
   insert into Contracts values ('666666', '532422');
-  insert into Contracts values ('666666', '764534');
-  insert into Contracts values ('666666', '524524');
+  -- insert into Contracts values ('666666', '764534');
+  -- insert into Contracts values ('666666', '524524');
 
   insert into Ingredient values ('100001', 'Cheese', 'https://i.imgur.com/TlZ34Lr.jpg', 'https://i.imgur.com/PO6Se9f.png');
   insert into IngredientVariety values ('101001', '100001', 'Germany', 2.4);
