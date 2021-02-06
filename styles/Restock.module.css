@@ -1,0 +1,37 @@
+.Restock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://i.imgur.com/1TEjAN5.jpg');
+  background-size: cover;
+}
+
+.content {
+  display: inline-block;
+  background-color: white;
+  padding: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.field select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.restockButton {
+  background-color: brown;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem;
+  min-width: 50%;
+  margin: auto;
+  margin-top: 1rem;
+}

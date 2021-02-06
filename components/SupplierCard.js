@@ -1,11 +1,11 @@
 import styles from '../styles/SupplierCard.module.css'
-import Router from 'next/router'
 import CrossButton from './CrossButton'
 import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
 import { Fragment, useCallback } from 'react'
+import { makePostRequest } from '../lib'
 
 export function toggleSupplierVisibility(bakerId, supplierId) {
   return makePostRequest('api/baker/suppliers/hide-or-show', {
