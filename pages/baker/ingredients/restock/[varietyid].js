@@ -45,14 +45,14 @@ export default function Restock({ variety, suppliers }) {
 
 export async function getServerSideProps(context) {
   const { varietyid } = context.query
+
+  const variety = await makeGetRequest(
+    `api/baker/ingredients/details-of?varietyid=${varietyid}`
+  )
+
   return {
     props: {
-      variety: {
-        id: varietyid,
-        region: 'Germany',
-        name: 'Cheese',
-        price: 4,
-      },
+      variety,
       suppliers: [
         {
           id: '333333',
