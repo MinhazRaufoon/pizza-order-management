@@ -40,6 +40,7 @@ begin
   drop trigger if exists increment_customer_total_orders on PizzaOrder;
   drop trigger if exists reduce_customer_total_orders on PizzaOrder;
   drop trigger if exists calculate_total_cost on Contains;
+  drop trigger if exists update_amount_of_owned_ingredient on Restocks;
 end;
 $$ LANGUAGE plpgsql;
 

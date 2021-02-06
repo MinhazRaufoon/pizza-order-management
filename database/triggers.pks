@@ -49,3 +49,18 @@ $$ language plpgsql;
 create trigger calculate_total_cost
   after insert on Contains for each row
   execute procedure calculateTotalCost();
+
+
+create or replace function updateAmountOfOwnedIngredient() returns trigger
+as $$
+begin
+  update Owns
+    set amount = amount + NEW.amount
+    where ingredientVarietyId = NEW.ingredientVarietyId and bakerId = NEW.bakerId;
+  return NEW;
+end;
+$$ language plpgsql;
+
+create trigger update_amount_of_owned_ingredient
+  after insert on Restocks for each row
+  execute procedure updateAmountOfOwnedIngredient();
