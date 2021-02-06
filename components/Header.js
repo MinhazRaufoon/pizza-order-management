@@ -22,18 +22,19 @@ export default function Header() {
           )}
 
           {pathname.indexOf('/ingredients') !== -1 && (
-            <>
-              <h2>
-                &nbsp;&nbsp;&gt;&nbsp;My Ingredients
-                {pathname.indexOf('/restock') !== -1 && (
-                  <>&nbsp;::&nbsp;Restock</>
-                )}
-              </h2>
-            </>
+            <h2>
+              &nbsp;&nbsp;&gt;&nbsp;My Ingredients
+              {pathname.indexOf('/restock') !== -1 && (
+                <>&nbsp;::&nbsp;Restock</>
+              )}
+            </h2>
           )}
 
           {pathname.indexOf('/suppliers') !== -1 && (
-            <h2>&nbsp;&nbsp;&gt;&nbsp;My Suppliers</h2>
+            <h2>
+              &nbsp;&nbsp;&gt;&nbsp;My Suppliers
+              {pathname.indexOf('/add') !== -1 && <>&nbsp;::&nbsp;Add New</>}
+            </h2>
           )}
         </>
       )}
