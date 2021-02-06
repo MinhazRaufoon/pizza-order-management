@@ -133,3 +133,26 @@ begin
   );
 end;
 $$ language plpgsql;
+
+
+create or replace function getSuppliersOfIngredientVariety(vVarietyId char(6)) returns setof json
+as $$
+declare
+  cursorSuppliers cursor for
+    select * 
+      from Produces join Supplier on Produces.supplierId = Supplier.id
+      where Produces.ingredientVarietyId = vVarietyId;
+  
+  vSupplier record;
+begin
+  open cursorSuppliers;
+  loop
+    fetch from cursorSuppliers into vSupplier;
+    exit when not found;
+    return next json_build_object(
+      'id', vSupplier.id,
+      'name', vSupplier.fullname
+    );
+  end loop;
+end;
+$$ language plpgsql;

@@ -50,19 +50,14 @@ export async function getServerSideProps(context) {
     `api/baker/ingredients/details-of?varietyid=${varietyid}`
   )
 
+  const suppliers = await makeGetRequest(
+    `api/baker/ingredients/suppliers-of?varietyid=${varietyid}`
+  )
+
   return {
     props: {
       variety,
-      suppliers: [
-        {
-          id: '333333',
-          name: 'Meow',
-        },
-        {
-          id: '333322',
-          name: 'Gheu',
-        },
-      ],
+      suppliers,
     },
   }
 }
