@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { makeGetRequest } from '../../../../lib'
 import styles from '../../../../styles/Restock.module.css'
 
 export default function Restock({ variety, suppliers }) {
+  const [supplierId, setSupplierId] = useState(suppliers[0].id)
+  const [amount, setRestockAmount] = useState(1)
+
   return (
     <section className={styles.Restock}>
       <div className={styles.content}>
@@ -16,10 +20,10 @@ export default function Restock({ variety, suppliers }) {
         <br />
 
         <div className={styles.field}>
-          <label>Select a supplier:&nbsp;&nbsp;</label>
+          <label>Select a supplier:&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <select>
             {suppliers.map(({ id, name }) => (
-              <option key={id} value={id}>
+              <option key={id} value={id} value={supplierId}>
                 {name}
               </option>
             ))}
@@ -27,8 +31,8 @@ export default function Restock({ variety, suppliers }) {
         </div>
 
         <div className={styles.field}>
-          <label>Select amount:&nbsp;&nbsp;</label>
-          <select>
+          <label>Select amount:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <select value={amount}>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>

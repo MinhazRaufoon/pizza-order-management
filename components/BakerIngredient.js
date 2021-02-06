@@ -6,6 +6,7 @@ import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
 import { useCallback } from 'react'
+import Link from 'next/link'
 import { makePostRequest } from '../lib'
 
 export function toggleIngredientVisibility(bakerId, ingredientVarietyId) {
@@ -57,7 +58,11 @@ export default function BakerIngredient(props) {
               <br />
 
               <div className={styles.buttons}>
-                {amount === 0 && <BuyButton />}
+                {amount === 0 && (
+                  <Link href={`ingredients/restock/${id}`}>
+                    <BuyButton />
+                  </Link>
+                )}
 
                 {isHidden ? (
                   <ShowButton
