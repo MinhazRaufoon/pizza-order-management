@@ -44,15 +44,20 @@ export default function BakerIngredient(props) {
             <div key={region} className={styles.modelInfo}>
               <Poster className={styles.modelPoster} imageUrl={shortImage} />
 
-              <b>From {region}&nbsp;</b>
+              <b>
+                From {region}
+                {isHidden && <i style={{ color: 'red' }}>&nbsp;Hidden</i>}
+              </b>
 
-              {isHidden && <i style={{ color: 'red' }}>&nbsp;(Hidden)</i>}
-              <label>Amount: {amount}</label>
-              <label>Price: {price}</label>
+              {amount > 0 && <label>Amount: {amount}</label>}
+              {amount === 0 && (
+                <b style={{ color: 'red' }}>&nbsp;Out of stock</b>
+              )}
+              <label>Price: {price} €</label>
               <br />
 
               <div className={styles.buttons}>
-                <BuyButton />
+                {amount === 0 && <BuyButton />}
 
                 {isHidden ? (
                   <ShowButton

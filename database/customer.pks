@@ -60,7 +60,7 @@ begin
     if vAmount = 0 then
       raise exception using
         errcode='P0002',
-        message='Some ingredients are out of stock',
+        message='Some ingredients are out of stock. Please refresh the page.',
         hint='Please refresh te page';
     end if;
 
@@ -80,6 +80,6 @@ exception
     -- Delete the order
     delete from PizzaOrder where orderNo = vOrderNo;
     delete from Contains where orderNo = vOrderNo;
-    return json_build_object('error', true, 'reason', 'Some ingredients are out of stock');
+    return json_build_object('error', true, 'reason', 'Some ingredients are out of stock. Please refresh the page.');
 end;
 $$ language plpgsql
