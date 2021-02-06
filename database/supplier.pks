@@ -68,3 +68,20 @@ begin
   );
 end;
 $$ LANGUAGE plpgsql;
+
+
+create or replace function canProduce(vSupplierId char(6), vVarietyId char(6)) returns boolean
+as $$
+declare
+  vCount boolean;
+begin
+  select count(*) into vCount 
+    from Produces where ingredientVarietyId = vVarietyId and supplierId = vSupplierId;
+  
+  if vCount > 0 then
+    return true;
+  else
+    return false;
+  end if;
+end;
+$$ language plpgsql;

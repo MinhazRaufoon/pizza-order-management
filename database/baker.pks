@@ -155,6 +155,7 @@ end;
 $$ language plpgsql;
 
 
+/* To get the list of suppliers of a baker who can produce a particular ingredient variety. (Necessary for restock) */
 create or replace function getSuppliersOfIngredientVariety(vbakerId char(6), vVarietyId char(6)) returns setof json
 as $$
 declare
@@ -176,6 +177,73 @@ begin
       'name', vSupplier.fullname
     );
   end loop;
+end;
+$$ language plpgsql;
+
+
+create or replace function isValidSupplier(vBakerId char(6), vSupplierId char(6)) returns boolean
+as $$
+declare
+  vRowCount integer;
+begin
+  select count(*) into vRowCount from Contracts
+    where bakerId = vBakerId and supplierId = vSupplierId;
+  if vRowCount > 0 then
+    return true;
+  else
+    return false;
+  end if;
+end;
+$$ language plpgsql;
+
+
+create or replace function isSupplierHidden(vBakerId char(6), vSupplierId char(6)) returns boolean
+as $$
+declare
+  vIsHidden boolean;
+begin
+  select isHidden into vIsHidden 
+    from Contracts where bakerId = vBakerId and supplierId = vSupplierId;
+  return vIsHidden;
+end;
+$$ language plpgsql;
+
+
+create or replace function restock(vBakerId char(6), vSupplierId char(6), vVarietyId char(6), vAmount integer) returns json
+as $$
+declare
+begin
+  if getAmountOfIngredientVariety(vBakerId, vVarietyId) > 0 then
+    raise exception using 
+      errcode='P002',
+      message='You can only restock out of stock ingredients';
+  end if;
+
+  if isValidSupplier(vBakerId, vSupplierId) = false then
+    raise exception using 
+      errcode='P002',
+      message='You have no contract with this supplier';
+  end if;
+
+  if isSupplierHidden(vBakerId, vSupplierId) = true then
+    raise exception using 
+      errcode='P002',
+      message='You cannot restock from a hidden supplier';
+  end if;
+
+  if canProduce(vVarietyId, vSupplierId) = true then
+    raise exception using 
+      errcode='P002',
+      message='The chosen supplier cannot produce this ingredient variety';
+  end if;
+
+  insert into Restocks values(vBakerId, vSupplierId, vVarietyId, now(), vAmount);
+
+  return json_build_object('success', true);
+
+exception
+  when sqlstate 'P0002' then
+    return json_build_object('success', false, 'message', sqlerrm);
 end;
 $$ language plpgsql;
 
