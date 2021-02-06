@@ -22,6 +22,33 @@ end;
 $$ LANGUAGE plpgsql;
 
 
+create or replace function getUncontractedSuppliers(vBakerId char(6)) returns setof json
+as $$
+declare
+  cursorMySupplier cursor for
+    select getSupplierById(id) as supplier
+      from (
+        with MyContracts as ( select * from Contracts where bakerId = vBakerId )
+        select * from 
+          MyContracts right join Supplier 
+            on Supplier.id = MyContracts.supplierId
+          where MyContracts.supplierId is null
+      ) as UncontractedSuppliers;
+  
+  vSupplierToAdd record;
+
+begin
+  open cursorMySupplier;
+  loop
+    fetch from cursorMySupplier into vSupplierToAdd;
+    exit when not found;
+    -- Extract each "supplier" object from the json and return as json
+    return next vSupplierToAdd.supplier;
+  end loop;
+end;
+$$ LANGUAGE plpgsql;
+
+
 create or replace function getMyIngredients(vBakerId char(6)) returns setof json
 as $$
 declare
