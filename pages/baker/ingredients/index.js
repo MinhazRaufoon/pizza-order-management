@@ -1,6 +1,6 @@
-import BakerIngredient from '../../components/BakerIngredient'
-import { makeGetRequest } from '../../lib'
-import styles from '../../styles/Ingredients.module.css'
+import BakerIngredient from '../../../components/BakerIngredient'
+import { makeGetRequest } from '../../../lib'
+import styles from '../../../styles/Ingredients.module.css'
 
 export default function Ingredients({ ingredients }) {
   return (

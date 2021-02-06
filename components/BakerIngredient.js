@@ -46,7 +46,7 @@ export default function BakerIngredient(props) {
 
               <b>
                 From {region}
-                {isHidden && <i style={{ color: 'red' }}>&nbsp;Hidden</i>}
+                {isHidden && <i style={{ color: 'blue' }}>&nbsp;(Hidden)</i>}
               </b>
 
               {amount > 0 && <label>Amount: {amount}</label>}
