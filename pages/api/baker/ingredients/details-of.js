@@ -2,11 +2,11 @@ import db from '../../../../database'
 
 export default async (req, res) => {
   try {
-    const { getingredientvarietybyid } = await db.one(
+    const { getingredientvarietybyid } = await db.instance.one(
       `select getIngredientVarietyById('${req.query.varietyid}')`
     )
 
-    const { getingredientbyvarietyid } = await db.one(
+    const { getingredientbyvarietyid } = await db.instance.one(
       `select getIngredientByVarietyId('${req.query.varietyid}')`
     )
 

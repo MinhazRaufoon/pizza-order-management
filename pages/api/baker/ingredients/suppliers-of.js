@@ -2,7 +2,7 @@ import db from '../../../../database'
 
 export default async (req, res) => {
   try {
-    const suppliers = await db.any(
+    const suppliers = await db.instance.any(
       `select getSuppliersOfIngredientVariety('${req.query.bakerid}', '${req.query.varietyid}')`
     )
     res.statusCode = 200

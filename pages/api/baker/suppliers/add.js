@@ -4,7 +4,7 @@ export default async (req, res) => {
   try {
     const { bakerId, supplierId } = JSON.parse(req.body)
 
-    const data = await db.any(
+    const data = await db.instance.any(
       `select addNewSupplier('${bakerId}', '${supplierId}')`
     )
 

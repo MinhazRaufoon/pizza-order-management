@@ -9,7 +9,7 @@ export default async (req, res) => {
   try {
     const { supplierId, amount, varietyId, bakerId } = JSON.parse(req.body)
 
-    const response = await db.one(
+    const response = await db.instance.one(
       `select restock('${bakerId}', '${supplierId}', '${varietyId}', ${amount})`
     )
 
