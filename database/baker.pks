@@ -339,3 +339,15 @@ begin
   );
 end;
 $$ language plpgsql;
+
+
+create or replace function deleteIngredientVariety(vBakerId char(6), vVarietyId char(6)) returns json
+as $$
+begin
+  delete from Owns
+   where bakerId = vBakerId and ingredientVarietyId = vVarietyId;
+  return json_build_object(
+    'success', true
+  );
+end;
+$$ language plpgsql;

@@ -32,6 +32,27 @@ export default function BakerIngredient(props) {
     [name]
   )
 
+  const deleteIngredientVariety = useCallback(
+    async (bakerId, varietyId, region) => {
+      if (window.confirm(`${name} from ${region} will be deleted. Continue?`)) {
+        const { success } = await makePostRequest(
+          'api/baker/ingredients/delete',
+          {
+            bakerId,
+            varietyId,
+          }
+        )
+        if (success) {
+          window.alert(`Successfully deleted ${name} from ${region}`)
+        } else {
+          window.alert(`Failed to delete ${name} from ${region}`)
+        }
+        window.location.reload()
+      }
+    },
+    [name]
+  )
+
   return (
     <div className={styles.BakerIngredient}>
       <Poster className={styles.poster} imageUrl={image} />
@@ -73,7 +94,9 @@ export default function BakerIngredient(props) {
                   />
                 )}
 
-                <CrossButton />
+                <CrossButton
+                  onClick={() => deleteIngredientVariety('666666', id, region)}
+                />
               </div>
             </div>
           ))}
