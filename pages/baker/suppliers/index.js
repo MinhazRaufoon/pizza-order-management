@@ -16,9 +16,9 @@ export default function Suppliers({ suppliers }) {
     <section className={styles.Suppliers}>
       <div className={styles.filters}>
         <h1>Here are my ingredient suppliers</h1>
-        <p>
+        <h4>
           Total ({suppliers.length}), Hidden ({hiddenCount})
-        </p>
+        </h4>
         <Link href="suppliers/add">
           <button className={styles.supplierAddButton}>Add Supplier</button>
         </Link>

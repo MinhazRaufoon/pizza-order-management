@@ -274,3 +274,13 @@ exception
 end;
 $$ language plpgsql;
 
+
+create or replace function addNewSupplier(vBakerId char(6), vSupplierId char(6)) returns json
+as $$
+begin
+  insert into Contracts values(vBakerId, vSupplierId);
+  return json_build_object(
+    'success', true
+  );
+end;
+$$ language plpgsql;
