@@ -1,7 +1,6 @@
 import styles from '../styles/BakerIngredient.module.css'
 import BuyButton from './BuyButton'
 import CrossButton from './CrossButton'
-import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
@@ -51,9 +50,9 @@ export default function BakerIngredient(props) {
               </b>
 
               {amount > 0 && <label>Amount: {amount}</label>}
-              {amount === 0 && (
-                <b style={{ color: 'red' }}>&nbsp;Out of stock</b>
-              )}
+
+              {amount === 0 && <b style={{ color: 'red' }}>Out of stock</b>}
+
               <label>Price: {price} €</label>
               <br />
 
@@ -74,7 +73,6 @@ export default function BakerIngredient(props) {
                   />
                 )}
 
-                <EditButton />
                 <CrossButton />
               </div>
             </div>

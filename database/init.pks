@@ -105,7 +105,7 @@ begin
 
   insert into Owns values ('666666', '101001', 'false', 3);
   insert into Owns values ('666666', '101003', 'false', 2);
-  insert into Owns values ('666666', '101002', 'false', 5);
+  insert into Owns values ('666666', '101002', 'false', 0);
   insert into Owns values ('666666', '102001', 'false', 4);
   insert into Owns values ('666666', '102002', 'false', 3);
   insert into Owns values ('666666', '102003', 'false', 2);

@@ -1,6 +1,5 @@
 import styles from '../styles/SupplierCard.module.css'
 import CrossButton from './CrossButton'
-import EditButton from './EditButton'
 import HideButton from './HideButton'
 import ShowButton from './ShowButton'
 import Poster from './Poster'
@@ -88,7 +87,6 @@ export default function SupplierCard(props) {
           ) : (
             <HideButton onClick={hideOrShow} />
           )}
-          <EditButton />
           <CrossButton onClick={remove} />
         </div>
       </div>
