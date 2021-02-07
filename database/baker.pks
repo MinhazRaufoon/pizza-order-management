@@ -284,3 +284,15 @@ begin
   );
 end;
 $$ language plpgsql;
+
+
+create or replace function deleteSupplier(vBakerId char(6), vSupplierId char(6)) returns json
+as $$
+begin
+  delete from Contracts
+   where bakerId = vBakerId and supplierId = vSupplierId;
+  return json_build_object(
+    'success', true
+  );
+end;
+$$ language plpgsql;

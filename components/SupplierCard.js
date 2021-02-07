@@ -24,6 +24,21 @@ export default function SupplierCard(props) {
     }
   }, [id, name, isHidden])
 
+  const remove = useCallback(async () => {
+    if (window.confirm(`Supplier ${id}-${name} will be deleted. Continue?`)) {
+      const response = await makePostRequest('api/baker/suppliers/delete', {
+        bakerId: '666666',
+        supplierId: id,
+      })
+      if (response.success) {
+        window.alert(`Supplier ${id}-${name} has been deleted`)
+      } else {
+        window.alert(`Could not delete supplier ${id}-${name}`)
+      }
+      window.location.reload()
+    }
+  }, [id, name])
+
   return (
     <div
       className={styles.SupplierCard}
@@ -74,7 +89,7 @@ export default function SupplierCard(props) {
             <HideButton onClick={hideOrShow} />
           )}
           <EditButton />
-          <CrossButton />
+          <CrossButton onClick={remove} />
         </div>
       </div>
     </div>
