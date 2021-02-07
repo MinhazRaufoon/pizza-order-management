@@ -27,6 +27,9 @@ export default function Header() {
               {pathname.indexOf('/restock') !== -1 && (
                 <>&nbsp;::&nbsp;Restock</>
               )}
+              {pathname.indexOf('/not-own') !== -1 && (
+                <>&nbsp;::&nbsp;Add New</>
+              )}
             </h2>
           )}
 

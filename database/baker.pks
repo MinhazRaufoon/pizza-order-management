@@ -328,3 +328,14 @@ begin
   end loop;
 end;
 $$ language plpgsql;
+
+
+create or replace function addIngredientVariety(vBakerId char(6), vVarietyId char(6)) returns json
+as $$
+begin
+  insert into Owns values(vBakerId, vVarietyId, false, 0);
+  return json_build_object(
+    'success', true
+  );
+end;
+$$ language plpgsql;
