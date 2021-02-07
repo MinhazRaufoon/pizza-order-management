@@ -1,0 +1,27 @@
+.IngredientToAdd {
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  align-items: center;
+  max-width: 500px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px gray;
+}
+
+.IngredientToAdd > * {
+  padding: 1rem;
+}
+
+.thumb {
+  width: 60px;
+  background-size: contain;
+}
+
+.IngredientToAdd button {
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  background-color: green;
+}
