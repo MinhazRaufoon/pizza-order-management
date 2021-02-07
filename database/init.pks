@@ -104,17 +104,17 @@ begin
   insert into IngredientVariety values ('110003', '100010', 'Germany', 2.5);
 
   insert into Owns values ('666666', '101001', 'false', 3);
-  insert into Owns values ('666666', '101003', 'false', 2);
+  --insert into Owns values ('666666', '101003', 'false', 2);
   insert into Owns values ('666666', '101002', 'false', 0);
   insert into Owns values ('666666', '102001', 'false', 4);
-  insert into Owns values ('666666', '102002', 'false', 3);
+  --insert into Owns values ('666666', '102002', 'false', 3);
   insert into Owns values ('666666', '102003', 'false', 2);
   insert into Owns values ('666666', '103001', 'false', 5);
-  insert into Owns values ('666666', '103002', 'false', 6);
+  --insert into Owns values ('666666', '103002', 'false', 6);
   insert into Owns values ('666666', '103003', 'false', 3);
-  insert into Owns values ('666666', '104001', 'false', 6);
+  --insert into Owns values ('666666', '104001', 'false', 6);
   insert into Owns values ('666666', '105001', 'false', 7);
-  insert into Owns values ('666666', '106001', 'false', 4);
+  --insert into Owns values ('666666', '106001', 'false', 4);
   insert into Owns values ('666666', '107001', 'false', 8);
   insert into Owns values ('666666', '108001', 'false', 5);
   insert into Owns values ('666666', '108002', 'false', 4);

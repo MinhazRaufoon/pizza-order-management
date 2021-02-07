@@ -296,3 +296,35 @@ begin
   );
 end;
 $$ language plpgsql;
+
+
+create or replace function getNotOwnIngredients(vBakerId char(6)) returns setof json
+as $$
+declare
+  vNotOwnIngredient record;
+
+  cursorNotOwnIngredients cursor for
+    select name, shortImage as image, IngredientVariety.id as id, region, price
+    from 
+      (select * from Owns where bakerId = vBakerId) as MyOwnedVarieties
+      right join 
+      (Ingredient join IngredientVariety on Ingredient.id = IngredientVariety.ingredientId)
+      on ingredientVarietyId = IngredientVariety.id
+    where MyOwnedVarieties.ingredientVarietyId is null;
+
+begin
+  open cursorNotOwnIngredients;
+  loop
+    fetch from cursorNotOwnIngredients into vNotOwnIngredient;
+    exit when not found;
+    
+    return next json_build_object(
+      'name', vNotOwnIngredient.name,
+      'image', vNotOwnIngredient.image,
+      'id', vNotOwnIngredient.id,
+      'region', vNotOwnIngredient.region,
+      'price', vNotOwnIngredient.price
+    );
+  end loop;
+end;
+$$ language plpgsql;
