@@ -55,8 +55,8 @@ async function main() {
   const command = process.argv[2]
 
   if (!command || command === '--full') {
-    await recreateAllFunctions()
     await recreateDatabaseTablesWithData()
+    await recreateAllFunctions()
   } else if (command === '--func') {
     await recreateAllFunctions()
   } else if (command === '--tables') {

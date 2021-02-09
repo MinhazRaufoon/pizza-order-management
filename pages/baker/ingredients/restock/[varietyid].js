@@ -4,7 +4,7 @@ import styles from '../../../../styles/Restock.module.css'
 import { useRouter } from 'next/router'
 
 export default function Restock({ variety, suppliers }) {
-  const [supplierId, setSupplierId] = useState(suppliers[0].id)
+  const [supplierId, setSupplierId] = useState(suppliers[0]?.id)
   const [amount, setRestockAmount] = useState(1)
 
   const { back } = useRouter()
@@ -27,6 +27,16 @@ export default function Restock({ variety, suppliers }) {
       window.alert(`Restock request denied! Reason: ${message}`)
     }
   }, [supplierId, amount])
+
+  if (suppliers.length === 0)
+    return (
+      <section className={styles.Restock}>
+        <h4>
+          No suppliers available. Please go back and add a supplier who produces{' '}
+          {variety.name} from {variety.region}
+        </h4>
+      </section>
+    )
 
   return (
     <section className={styles.Restock}>
